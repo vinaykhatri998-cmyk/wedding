@@ -35,10 +35,11 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
+html, body { overflow-x: hidden; }
 body.locked { overflow: hidden; height: 100%; }
 .page {
   max-width: 480px; margin: 0 auto; background: var(--ivory); min-height: 100vh;
-  box-shadow: 0 0 60px rgba(60,70,50,.18); overflow: hidden; position: relative;
+  box-shadow: 0 0 60px rgba(60,70,50,.18); overflow: hidden; overflow-x: clip; position: relative;
 }
 .wrap { padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
 
@@ -175,7 +176,7 @@ section.block { padding-block: 56px; text-align: center; display: grid; gap: 18p
 .info { width: 100%; display: grid; gap: 12px; text-align: left; }
 .info div { border-top: 1px solid #e6dccb; padding-top: 14px; }
 .info h3 { margin: 0 0 2px; font-family: var(--f-sans); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--sage-deep); font-weight: 500; }
-.info p { margin: 0; color: var(--muted); font-size: 17px; }
+.info p { margin: 0; color: var(--muted); font-size: 17px; overflow-wrap: anywhere; }
 
 /* RSVP */
 .rsvp-form { width: 100%; display: grid; gap: 12px; text-align: left; }
@@ -366,10 +367,10 @@ footer p { margin: 0; opacity: .8; font-size: 16px; }
       <h2 class="title">With Love From</h2>
       <div class="rule">♥</div>
       <div class="info" style="text-align:center">
-        <div><h3>Awaiting your presence</h3><p><span style="white-space:nowrap">Mr. Hargovind Khatri</span> · <span style="white-space:nowrap">Mr. Shyam Sunder Khatri</span> · <span style="white-space:nowrap">Mrs. Lata Khatri</span> · <span style="white-space:nowrap">Mr. Mohan Khatri</span> · <span style="white-space:nowrap">Mr. Rajesh Khatri</span> · <span style="white-space:nowrap">Mrs. Ganga Khatri</span> · <span style="white-space:nowrap">All Khatri Family, Relatives &amp; Friends</span></p></div>
-        <div><h3>A cordial invitation</h3><p><span style="white-space:nowrap">Mr. Manoj Devnani</span> · <span style="white-space:nowrap">Mrs. Reena Devnani</span> · <span style="white-space:nowrap">Mr. Jitendra Khatri</span> · <span style="white-space:nowrap">Mrs. Payal Khatri</span> · <span style="white-space:nowrap">Mr. Ravindra Khatri</span> · <span style="white-space:nowrap">Mrs. Juhi Khatri</span> · <span style="white-space:nowrap">Mr. Mahesh Tilwani</span> · <span style="white-space:nowrap">Mr. Satish Tilwani</span></p></div>
-        <div><h3>Welcome you</h3><p><span style="white-space:nowrap">Mrs. Aanchal &amp; Mr. Pervesh Malghani</span> · <span style="white-space:nowrap">Mrs. Shivani &amp; Mr. Gyan Chawla</span></p></div>
-        <div><h3>Sharing our joy</h3><p><span style="white-space:nowrap">Shubham, Vinay, Pushpendra, Khushi, Durgesh, Meenakshi, Ayush, Sparsh, Aastha, Prakhar, Kashak, Aakansha, Vihan, Love, Laksh</span></p></div>
+        <div><h3>Awaiting your presence</h3><p><span>Mr. Hargovind Khatri</span> · <span>Mr. Shyam Sunder Khatri</span> · <span>Mrs. Lata Khatri</span> · <span>Mr. Mohan Khatri</span> · <span>Mr. Rajesh Khatri</span> · <span>Mrs. Ganga Khatri</span> · <span>All Khatri Family, Relatives &amp; Friends</span></p></div>
+        <div><h3>A cordial invitation</h3><p><span>Mr. Manoj Devnani</span> · <span>Mrs. Reena Devnani</span> · <span>Mr. Jitendra Khatri</span> · <span>Mrs. Payal Khatri</span> · <span>Mr. Ravindra Khatri</span> · <span>Mrs. Juhi Khatri</span> · <span>Mr. Mahesh Tilwani</span> · <span>Mr. Satish Tilwani</span></p></div>
+        <div><h3>Welcome you</h3><p><span>Mrs. Aanchal &amp; Mr. Pervesh Malghani</span> · <span>Mrs. Shivani &amp; Mr. Gyan Chawla</span></p></div>
+        <div><h3>Sharing our joy</h3><p><span>Shubham, Vinay, Pushpendra, Khushi, Durgesh, Meenakshi, Ayush, Sparsh, Aastha, Prakhar, Kashak, Aakansha, Vihan, Love, Laksh</span></p></div>
       </div>
     </section>
 
