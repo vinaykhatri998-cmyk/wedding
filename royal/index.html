@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Shivendra &amp; Roshni · Royal Wedding Invitation</title>
-<link rel="preload" as="image" href="img/wall.webp"><link rel="preload" as="image" href="img/door.webp">
+<link rel="preload" as="image" href="img/g-wall.webp"><link rel="preload" as="image" href="img/g-door-l.webp"><link rel="preload" as="image" href="img/g-door-r.webp"><link rel="preload" as="image" href="img/night.webp">
 <meta name="description" content="You are invited · Wednesday, 2nd December 2026 · Sindhu Bhawan, Bilaspur">
 <meta property="og:title" content="Shivendra & Roshni · Royal Wedding Invitation">
 <meta property="og:description" content="Tap the palace doors to open your invitation · 1–2 December 2026 · Bilaspur">
@@ -31,32 +31,33 @@ button{font:inherit;cursor:pointer}
 @keyframes shine{to{background-position:-220% 0}}
 
 /* ============ 3D GATE ============ */
-#gate{position:fixed;inset:0;z-index:100;background:#b8621a;overflow:hidden;perspective:1100px;perspective-origin:50% 52%}
+#gate{position:fixed;inset:0;z-index:100;background:#2a170c;overflow:hidden;perspective:1100px;perspective-origin:50% 52%}
+.gatebg{position:absolute;inset:-40px;background:url(img/g-wall.webp) 50% 50%/cover;filter:blur(14px) brightness(.55)}
 #world{position:absolute;left:50%;top:50%;width:400px;height:800px;margin:-400px 0 0 -200px;transform-style:preserve-3d;transform-origin:50% 54%;will-change:transform}
 #world.push{transition:transform 1.9s cubic-bezier(.55,0,.75,.4)}
 #tiltbox{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateY(calc(var(--tx)*5deg)) rotateX(calc(var(--ty)*-4deg));transition:transform .25s ease-out}
-.glowroom{position:absolute;left:100px;top:190px;width:200px;height:460px;transform:translateZ(-90px);background:radial-gradient(60% 50% at 50% 60%,#fffbe6,#ffe9a8 45%,#f4b950 80%,#d9892a);box-shadow:0 0 60px #ffdf9a}
-.rays{position:absolute;left:60px;top:150px;width:280px;height:520px;transform:translateZ(-40px);opacity:0;transition:opacity 1.2s ease .4s;background:conic-gradient(from 180deg at 50% 62%,transparent 0 150deg,rgba(255,240,190,.55) 160deg,transparent 170deg 175deg,rgba(255,240,190,.5) 182deg,transparent 190deg 197deg,rgba(255,240,190,.55) 203deg,transparent 212deg);filter:blur(6px);mix-blend-mode:screen}
+.glowroom{position:absolute;left:40px;top:250px;width:320px;height:420px;transform:translateZ(-90px);background:radial-gradient(60% 50% at 50% 60%,#fffbe6,#ffe9a8 45%,#f4b950 80%,#d9892a);box-shadow:0 0 60px #ffdf9a}
+.rays{position:absolute;left:30px;top:220px;width:340px;height:470px;transform:translateZ(-40px);opacity:0;transition:opacity 1.2s ease .4s;background:conic-gradient(from 180deg at 50% 62%,transparent 0 150deg,rgba(255,240,190,.55) 160deg,transparent 170deg 175deg,rgba(255,240,190,.5) 182deg,transparent 190deg 197deg,rgba(255,240,190,.55) 203deg,transparent 212deg);filter:blur(6px);mix-blend-mode:screen}
 #gate.open .rays{opacity:1}
-.doorbox{position:absolute;left:110px;top:195px;width:180px;height:445px;perspective:620px;perspective-origin:50% 55%;transform-style:preserve-3d}
-.door{position:absolute;top:0;width:90px;height:445px;transform-style:preserve-3d;will-change:transform;transition:transform 2.1s cubic-bezier(.6,.02,.2,1),filter 2.1s ease}
+.doorbox{position:absolute;left:77.4px;top:302.9px;width:245.1px;height:320.1px;perspective:620px;perspective-origin:50% 55%;transform-style:flat;overflow:visible}
+.door{position:absolute;top:0;width:50%;height:100%;transform-style:preserve-3d;will-change:transform;transition:transform 2.1s cubic-bezier(.6,.02,.2,1),filter 2.1s ease}
 .door img{position:absolute;inset:0;width:100%;height:100%;display:block}
 .door.l{left:0;transform-origin:0 50%}
 .door.r{right:0;transform-origin:100% 50%}
-.door .edge{position:absolute;top:0;width:14px;height:100%;background:linear-gradient(90deg,#0d2c63,#1a4c9a)}
+.door .edge{position:absolute;top:12%;width:12px;height:88%;background:linear-gradient(90deg,#0c1a3e,#24386e)}
 .door.l .edge{right:0;transform-origin:100% 50%;transform:rotateY(-90deg)}
 .door.r .edge{left:0;transform-origin:0 50%;transform:rotateY(90deg)}
 #gate.open .door.l{transform:rotateY(74deg);filter:brightness(.72)}
 #gate.open .door.r{transform:rotateY(-74deg);filter:brightness(.72)}
-.wall{position:absolute;inset:0;width:100%;height:100%;transform:translateZ(1px);pointer-events:none}
+.wall{position:absolute;left:0;top:0;width:400px;height:800px;object-fit:cover;object-position:50.36% 50%;transform:translateZ(1px);pointer-events:none}
 .lantern{position:absolute;top:0;width:34px;transform-origin:50% 0;transform:translateZ(46px);animation:sway 4s ease-in-out infinite}
 .lantern.b{animation-delay:-2s}
 @keyframes sway{0%,100%{transform:translateZ(46px) rotate(3deg)}50%{transform:translateZ(46px) rotate(-3deg)}}
-.gate-title{position:absolute;left:0;right:0;top:38px;text-align:center;transform:translateZ(30px);color:#fff7df;text-shadow:0 2px 8px rgba(90,40,0,.6)}
+.gate-title{position:absolute;left:0;right:0;top:44px;text-align:center;transform:translateZ(30px);color:#fff7df;text-shadow:0 2px 8px rgba(90,40,0,.6)}
 .gate-title .k{font-family:var(--caps);font-size:9px;letter-spacing:.34em}
 .gate-title .n{font-family:var(--script);font-size:40px;line-height:1.1}
 .gate-title .g{font-family:var(--serif);font-style:italic;font-size:14px;opacity:.95}
-#enter{position:absolute;left:50%;top:470px;width:150px;margin-left:-75px;transform:translateZ(60px);background:none;border:0;padding:0;color:#fff7df;text-align:center;transition:opacity .4s}
+#enter{position:absolute;left:50%;top:430px;width:150px;margin-left:-75px;transform:translateZ(60px);background:none;border:0;padding:0;color:#fff7df;text-align:center;transition:opacity .4s}
 #enter .ring{width:66px;height:66px;margin:0 auto;border-radius:50%;border:1.5px solid rgba(255,236,170,.9);display:grid;place-items:center;background:rgba(18,58,126,.55);box-shadow:0 0 0 0 rgba(255,236,170,.6);animation:pulse 1.9s ease-out infinite}
 @keyframes pulse{to{box-shadow:0 0 0 22px rgba(255,236,170,0)}}
 #enter .ring svg{width:26px;height:26px}
@@ -67,13 +68,16 @@ button{font:inherit;cursor:pointer}
 #gate.out{transition:opacity 1s ease;opacity:0;pointer-events:none}
 
 /* ============ NIGHT HERO ============ */
-.night{position:relative;height:100svh;min-height:640px;max-height:900px;overflow:hidden;background:#0b1440;color:#fff;text-align:center}
+.night{position:relative;height:100svh;min-height:640px;max-height:900px;overflow:hidden;background:linear-gradient(#070d24,#0f1a3c 60%);color:#fff;text-align:center}
 .night .layer{position:absolute;left:-6%;width:112%;bottom:0;will-change:transform}
 #stars{position:absolute;inset:0;width:100%;height:100%}
+.nightwrap{position:absolute;left:0;right:0;bottom:0;will-change:transform}
+.nightimg{display:block;width:215%;max-width:none;animation:pan 26s ease-in-out infinite alternate;-webkit-mask-image:linear-gradient(transparent,#000 18%);mask-image:linear-gradient(transparent,#000 18%)}
+@keyframes pan{from{transform:translateX(-4%)}to{transform:translateX(-50%)}}
 .moon{position:absolute;right:7%;top:4.5%;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 60% 66%,rgba(180,150,80,.35) 0 9%,transparent 10%),radial-gradient(circle at 34% 58%,rgba(180,150,80,.3) 0 6%,transparent 7%),radial-gradient(circle at 34% 30%,#fffef4,#fdf0c0 55%,#c9a860);box-shadow:0 0 40px 14px rgba(255,236,170,.35),0 0 120px 50px rgba(255,236,170,.16)}
 .skyl{position:absolute;bottom:-40px;width:18px;height:24px;border-radius:5px 5px 7px 7px;background:linear-gradient(#ffd98a,#f08a2a);box-shadow:0 0 14px 4px rgba(255,180,80,.6);opacity:0;animation:rise linear infinite}
 @keyframes rise{0%{transform:translate(0,0) scale(1);opacity:0}8%{opacity:.95}100%{transform:translate(var(--dx),-115vh) scale(.5);opacity:0}}
-.hero-copy{position:absolute;left:0;right:0;top:10.5%;padding:0 24px;transform:translate3d(calc(var(--tx)*-8px),calc(var(--ty)*-6px),0)}
+.hero-copy{position:absolute;left:0;right:0;top:10.5%;text-shadow:0 2px 14px rgba(5,10,30,.85);padding:0 24px;transform:translate3d(calc(var(--tx)*-8px),calc(var(--ty)*-6px),0)}
 .hero-copy .hin{font-family:var(--hindi);font-size:15px;color:var(--gold-hi);letter-spacing:.04em}
 .hero-copy .k{font-family:var(--caps);font-size:10px;letter-spacing:.34em;color:#cfd8ff;margin-top:20px}
 .hero-copy h1{font-family:var(--script);font-weight:400;font-size:74px;line-height:1.02;margin:10px 0 0}
@@ -184,6 +188,49 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 .names h4{margin:0 0 4px;font-family:var(--caps);font-weight:500;font-size:10px;letter-spacing:.24em;color:var(--gold-hi)}
 .names p{margin:0;color:#d5dcff;font-size:16.5px;line-height:1.5;overflow-wrap:anywhere}
 
+/* image cards */
+.ganesha{width:150px;height:150px;margin:0 auto -6px;border-radius:50%;position:relative;z-index:2;box-shadow:0 0 0 4px #e6c46a,0 0 0 7px #7a1426,0 0 0 9px #c9a14a,0 18px 34px rgba(90,40,10,.45),0 0 60px rgba(255,200,90,.55)}
+.ganesha img{width:100%;height:100%;border-radius:50%;display:block;animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-5px) scale(1.02)}}
+.plaque{position:relative;margin:0 -22px;aspect-ratio:1300/768;transform-style:preserve-3d;filter:drop-shadow(0 26px 26px rgba(60,20,10,.35))}
+.plaque>img,.swing>img,.mandap>img,.pcard>img,.gwcard>img,.curtain>img{position:absolute;inset:0;width:100%;height:100%;display:block;border-radius:inherit}
+.plaque .pin{position:absolute;left:22%;right:22%;top:20%;bottom:22%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fbeecb;transform:translateZ(34px)}
+.plaque .hin{font-size:9.5px;white-space:nowrap}
+.plaque .nm{font-size:clamp(28px,8.6vw,40px);line-height:.98}
+.plaque .amp{font-size:17px;line-height:.9}
+.plaque .dt{font-size:8px;letter-spacing:.08em;margin-top:5px;white-space:nowrap}
+.invtext{max-width:340px;margin:30px auto 0;padding:26px 20px;border-radius:14px;background:linear-gradient(160deg,#fffdf6,#f4e8cf);border:1px solid var(--gold);box-shadow:0 4px 0 #b8892f,0 24px 32px rgba(90,40,20,.2),inset 0 0 0 5px #fffaf0,inset 0 0 0 6px rgba(201,161,74,.6)}
+.invtext p{margin:0;font-style:italic;font-size:16.5px;line-height:1.45;color:var(--ink)}
+.invtext .sh{font-family:var(--hindi);font-style:normal;font-size:14px;color:var(--gold-lo);margin-bottom:14px}
+.invtext .nm2{font-family:var(--script);font-size:46px;line-height:1.1;color:var(--maroon);margin-top:8px}
+.invtext .par{font-size:14.5px;color:var(--muted)}
+.invtext .amp2{font-family:var(--script);font-size:26px;color:var(--gold-lo);margin-top:6px}
+.swing{position:relative;margin:26px -22px 0;aspect-ratio:1100/861;transform-style:preserve-3d;filter:drop-shadow(0 22px 24px rgba(40,20,10,.35))}
+.swing-in{position:absolute;left:26.5%;right:26.5%;top:36%;bottom:29%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transform:translateZ(30px)}
+.swing .sl{font-family:var(--script);font-size:clamp(14px,4.1vw,20px);white-space:nowrap;color:var(--gold-hi);line-height:1;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.swing .count{gap:4px;margin:0;width:100%;max-width:none}
+.swing .count div{padding:7px 0 5px;border-radius:7px}
+.swing .count b{font-size:clamp(17px,5.2vw,26px)}
+.swing .count span{font-size:6.5px;letter-spacing:.12em}
+.mandap{position:relative;margin:30px -22px 0;aspect-ratio:1300/896;transform-style:preserve-3d;filter:drop-shadow(0 22px 24px rgba(60,30,10,.3))}
+.mph{position:absolute;left:31%;width:38%;top:31%;height:63%;background:url(couple.jpg) 50% 22%/cover;border:3px solid #e9c46a;border-radius:46% 46% 8px 8px/30% 30% 8px 8px;box-shadow:0 20px 30px rgba(40,10,0,.5),0 0 0 5px rgba(122,20,38,.85),0 0 0 7px #e9c46a;transform:translateZ(46px)}
+.couple{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pcard{position:relative;width:100%;max-width:340px;margin:0 auto;aspect-ratio:900/1147;border-radius:20px;transform-style:preserve-3d;box-shadow:0 30px 40px rgba(60,25,10,.35),0 0 0 1px rgba(201,161,74,.6)}
+.pcard .in{position:absolute;left:23%;right:23%;top:25%;bottom:21%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transform:translateZ(30px)}
+.pcard .ev h3{font-size:clamp(21px,6.4vw,27px)}
+.pcard .ev p{font-size:14px}
+.gwcard{position:relative;width:100%;max-width:360px;margin:0 auto;aspect-ratio:950/1040;border-radius:18px;transform-style:preserve-3d;box-shadow:0 30px 40px rgba(20,20,60,.35)}
+.gwcard .in{position:absolute;left:21%;right:21%;top:31%;bottom:9%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transform:translateZ(30px)}
+.curtain{position:relative;margin:24px -22px 0;aspect-ratio:950/1250;transform-style:preserve-3d;filter:drop-shadow(0 26px 30px rgba(60,20,10,.3))}
+.curtain>img{object-fit:fill}
+.curtain form{position:absolute;left:26%;right:26%;top:17%;bottom:9%;margin:0;gap:7px;align-content:center;transform:translateZ(26px)}
+.curtain label{font-size:8px;gap:3px}
+.curtain input,.curtain select,.curtain textarea{font-size:15px;padding:8px 10px;border-radius:8px;background:rgba(255,253,247,.92)}
+.curtain textarea{min-height:70px}
+.curtain .btn{padding:11px 10px;font-size:9.5px;letter-spacing:.12em}
+.closeimg{position:relative;margin:-84px -22px 0;height:min(78vh,560px);overflow:hidden}
+.closeimg img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;transform:scale(calc(1.18 - var(--p)*.18));transform-origin:50% 60%}
+.closeimg::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,#0b1440)}
 #dust{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
 @media (prefers-reduced-motion:reduce){[data-3d]{--p:1!important}.goldtext,.lantern,.feather,.skyl{animation:none}}
 </style>
@@ -192,16 +239,15 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 
 <!-- ================== 3D PALACE GATE ================== -->
 <div id="gate" aria-label="Palace doors">
+  <div class="gatebg"></div>
   <div id="world"><div id="tiltbox">
     <div class="glowroom"></div>
     <div class="rays"></div>
     <div class="doorbox">
-      <div class="door l"><img src="img/door.webp" alt=""><div class="edge"></div></div>
-      <div class="door r"><img src="img/door.webp" alt="" style="transform:scaleX(-1)"><div class="edge"></div></div>
+      <div class="door l"><img src="img/g-door-l.webp" alt=""><div class="edge"></div></div>
+      <div class="door r"><img src="img/g-door-r.webp" alt=""><div class="edge"></div></div>
     </div>
-    <img class="wall" src="img/wall.webp" alt="">
-    <svg class="lantern" style="left:60px" viewBox="0 0 34 150"><path d="M17 0V84" stroke="#8d6a26" stroke-width="1.5"/><path d="M9 86h16l5 8H4z" fill="#c9a14a"/><path d="M5 94 Q0 112 7 128 H27 Q34 112 29 94Z" fill="url(#lanf)" stroke="#8d6a26" stroke-width="1.5"/><path d="M12 94V128M22 94V128" stroke="#8d6a26"/><path d="M7 128h20l-10 14z" fill="#c9a14a"/><circle cx="17" cy="111" r="16" fill="#fff3c2" opacity=".35"/></svg>
-    <svg class="lantern b" style="left:306px" viewBox="0 0 34 150"><path d="M17 0V84" stroke="#8d6a26" stroke-width="1.5"/><path d="M9 86h16l5 8H4z" fill="#c9a14a"/><path d="M5 94 Q0 112 7 128 H27 Q34 112 29 94Z" fill="url(#lanf)" stroke="#8d6a26" stroke-width="1.5"/><path d="M12 94V128M22 94V128" stroke="#8d6a26"/><path d="M7 128h20l-10 14z" fill="#c9a14a"/><circle cx="17" cy="111" r="16" fill="#fff3c2" opacity=".35"/></svg>
+    <img class="wall" src="img/g-wall.webp" alt="">
     <div class="gate-title"><div class="k">The Wedding Of</div><div class="n">Shivendra &amp; Roshni</div><div class="g" id="gateGuest">You are invited</div></div>
     <button id="enter" type="button" aria-label="Open the palace doors">
       <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="#fff3c2" stroke-width="1.6"><path d="M12 3 9 6h2v6H7.5a1.5 1.5 0 0 0 0 3H9l-1.5 3.5L10 21h7l1.5-6-2-3H13V6h2z"/></svg></div>
@@ -218,46 +264,7 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 <!-- ================== NIGHT HERO ================== -->
 <header class="night" id="night">
   <canvas id="stars"></canvas>
-  <div class="moon" data-par="-.12"></div>
-  <svg class="layer" data-par="-.2" viewBox="0 0 448 300" preserveAspectRatio="xMidYMax slice" style="height:60%"><path d="M0 190 Q60 120 130 170 Q200 90 280 160 Q350 110 448 180 V300 H0Z" fill="#16296e"/><path d="M0 220 Q90 170 170 210 Q260 160 340 205 Q400 180 448 215 V300H0Z" fill="#1c3585"/></svg>
-  <svg class="layer" data-par="-.34" viewBox="0 0 448 330" preserveAspectRatio="xMidYMax slice" style="height:58%">
-    <defs><linearGradient id="lk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#27469c"/><stop offset="1" stop-color="#0c1748"/></linearGradient></defs>
-    <rect y="205" width="448" height="125" fill="url(#lk)"/>
-    <defs>
-      <linearGradient id="pw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f7e2b6"/><stop offset=".55" stop-color="#d9b683"/><stop offset="1" stop-color="#8a6a52"/></linearGradient>
-      <linearGradient id="pw2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e8cf9f"/><stop offset="1" stop-color="#6f5547"/></linearGradient>
-      <radialGradient id="dome" cx=".32" cy=".25" r=".9"><stop offset="0" stop-color="#fff6d6"/><stop offset=".4" stop-color="#e2b85c"/><stop offset="1" stop-color="#6b4a1e"/></radialGradient>
-      <linearGradient id="win" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3b8"/><stop offset="1" stop-color="#ff9d2e"/></linearGradient>
-      <linearGradient id="fog" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fa6ff" stop-opacity="0"/><stop offset="1" stop-color="#8fa6ff" stop-opacity=".35"/></linearGradient>
-      <g id="pav"><rect x="-13" y="-34" width="26" height="34" fill="url(#pw)"/><rect x="-16" y="-38" width="32" height="5" fill="url(#pw2)"/><path d="M-13 -38 Q-15 -52 0 -60 Q15 -52 13 -38Z" fill="url(#dome)"/><path d="M0 -60V-70" stroke="#e2b85c" stroke-width="1.4"/><circle cx="0" cy="-71" r="1.8" fill="#fff0b8"/><path d="M-5 0V-20 Q0 -29 5 -20V0Z" fill="url(#win)"/></g>
-      <g id="palace">
-        <rect x="60" y="150" width="328" height="55" fill="url(#pw)"/>
-        <rect x="56" y="145" width="336" height="6" fill="url(#pw2)"/>
-        <g fill="#b8956a"><path d="M60 145 v-6 h8 v6 M76 145 v-6 h8 v6 M92 145 v-6 h8 v6 M108 145 v-6 h8 v6 M124 145 v-6 h8 v6 M316 145 v-6 h8 v6 M332 145 v-6 h8 v6 M348 145 v-6 h8 v6 M364 145 v-6 h8 v6 M380 145 v-6 h8 v6"/></g>
-        <rect x="150" y="96" width="148" height="109" fill="url(#pw)"/>
-        <rect x="145" y="90" width="158" height="7" fill="url(#pw2)"/>
-        <path d="M186 90 Q180 52 224 30 Q268 52 262 90Z" fill="url(#dome)"/>
-        <path d="M224 30V12" stroke="#e2b85c" stroke-width="2"/><circle cx="224" cy="10" r="3" fill="#fff0b8"/>
-        <use href="#pav" x="160" y="90" transform="translate(0 0)"/><use href="#pav" x="288" y="90"/>
-        <use href="#pav" x="74" y="145"/><use href="#pav" x="374" y="145"/>
-        <use href="#pav" transform="translate(118 145) scale(.8)"/><use href="#pav" transform="translate(330 145) scale(.8)"/>
-        <g fill="url(#win)"><path d="M210 205V158 Q224 136 238 158V205Z"/>
-          <path d="M164 150v-22q6-10 12 0v22z M184 150v-22q6-10 12 0v22z M252 150v-22q6-10 12 0v22z M272 150v-22q6-10 12 0v22z"/>
-          <path d="M164 192v-22q6-10 12 0v22z M184 192v-22q6-10 12 0v22z M252 192v-22q6-10 12 0v22z M272 192v-22q6-10 12 0v22z"/>
-          <path d="M72 192v-22q5-9 10 0v22z M90 192v-22q5-9 10 0v22z M108 192v-22q5-9 10 0v22z M126 192v-22q5-9 10 0v22z M312 192v-22q5-9 10 0v22z M330 192v-22q5-9 10 0v22z M348 192v-22q5-9 10 0v22z M366 192v-22q5-9 10 0v22z"/></g>
-        <rect x="60" y="150" width="328" height="55" fill="#0a1238" opacity=".18"/>
-        <rect x="298" y="96" width="0" height="0"/>
-        <path d="M262 96 h36 v109 h-36z" fill="#1a1030" opacity=".22"/>
-      </g>
-    </defs>
-    <ellipse cx="224" cy="170" rx="150" ry="60" fill="#ffcf7a" opacity=".2" filter="url(#soft)"/>
-    <g transform="translate(224 205) scale(.52) translate(-224 -205)"><use href="#palace"/></g>
-    <g transform="translate(224 205) scale(.52 -.52) translate(-224 -205)" opacity=".38"><use href="#palace"/></g>
-    <rect y="205" width="448" height="125" fill="url(#lk)" opacity=".45"/>
-    <rect y="150" width="448" height="60" fill="url(#fog)"/>
-    <g stroke="#9db4ff" stroke-width="1" opacity=".35"><path d="M20 236h70M150 252h90M300 244h110M60 276h120M240 290h150M10 304h90"/></g>
-    <path d="M0 205 H448" stroke="#ffe7a8" stroke-width="1" opacity=".5"/>
-  </svg>
+  <div class="nightwrap" data-par="-.12"><img class="nightimg" src="img/night.webp" alt="A bride and groom by a moonlit lake palace"></div>
   <div id="skyl"></div>
   <svg class="layer" data-par="-.05" viewBox="0 0 448 120" preserveAspectRatio="xMidYMin slice" style="top:0;bottom:auto;height:17%"><g id="toran"></g></svg>
   <div class="hero-copy">
@@ -274,23 +281,26 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 <section class="paper pad">
   <div class="kicker">With the blessings of our elders</div>
   <h2 class="h2">The Royal Invitation</h2><div class="orn">✦</div>
-  <div class="stage3d" style="margin-top:34px">
-    <div class="frame dark fx-tilt inv" data-3d>
-      <img class="f" src="img/frame-dark.webp" alt="">
-      <svg class="feather" style="left:-9%;bottom:4%;--r:-22deg" viewBox="0 0 60 190"><use href="#feather"/></svg>
-      <svg class="feather" style="right:-9%;bottom:4%;--r:22deg" viewBox="0 0 60 190"><use href="#feather"/></svg>
-      <div class="in" style="top:24%;left:13%;right:13%">
-        <div class="hin">॥ श्री गणेशाय नमः ॥</div>
-        <p id="respect">Mrs. Indira &amp; Mr. Shailendra Khatri<br>solicit your gracious presence and blessings at the wedding of their beloved son</p>
-        <div class="nm goldtext">Shivendra</div>
-        <div class="par">Grandson of Late Mrs. Radhika Devi<br>&amp; Mr. Hargovind Khatri</div>
-        <div class="amp">&amp;</div>
-        <div class="nm goldtext">Roshni</div>
-        <div class="par">D/o Mrs. Varsha &amp; Mr. Dinesh Lalwani<br>Grand D/o Mrs. Dropati &amp; Late Mr. Girdhari Lal Lalwani</div>
+  <div class="stage3d" style="margin-top:26px">
+    <div class="ganesha fx-rise" data-3d><img src="img/ganesha.webp" alt="Lord Ganesha" loading="lazy"></div>
+    <div class="plaque fx-tilt inv" data-3d>
+      <img src="img/plaque.webp" alt="" loading="lazy">
+      <div class="pin">
+        <div class="hin">॥ श्री गणेशाय नमः ॥ &nbsp;॥ जय झूलेलाल ॥</div>
+        <div class="nm goldtext">Shivendra</div><div class="amp">weds</div><div class="nm goldtext">Roshni</div>
         <div class="dt">Wednesday · 2nd December 2026</div>
       </div>
-      <div class="glare" style="border-radius:40% 40% 4% 4%/26% 26% 2% 2%"></div>
+      <div class="glare"></div>
     </div>
+  </div>
+  <div class="invtext fx-rise" data-3d>
+    <p class="sh">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।<br>निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥</p>
+    <p id="respect">Mrs. Indira &amp; Mr. Shailendra Khatri<br>solicit your gracious presence and blessings at the wedding of their beloved son</p>
+    <div class="nm2">Shivendra</div>
+    <p class="par">Grandson of Late Mrs. Radhika Devi &amp; Mr. Hargovind Khatri</p>
+    <div class="amp2">with</div>
+    <div class="nm2">Roshni</div>
+    <p class="par">D/o Mrs. Varsha &amp; Mr. Dinesh Lalwani<br>Grand D/o Mrs. Dropati &amp; Late Mr. Girdhari Lal Lalwani</p>
   </div>
 </section>
 
@@ -298,9 +308,10 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 <section class="pad" style="background:var(--ivory-2)">
   <div class="kicker">Counting the moments</div>
   <h2 class="h2">Until We Say “I Do”</h2><div class="orn">✦</div>
-  <div class="count" id="count">
+  <div class="stage3d"><div class="swing fx-tilt" data-3d><img src="img/swing.webp" alt="" loading="lazy">
+    <div class="swing-in"><div class="sl">Our Wedding Countdown</div><div class="count" id="count">
     <div><b id="cd-d">–</b><span>Days</span></div><div><b id="cd-h">–</b><span>Hours</span></div><div><b id="cd-m">–</b><span>Mins</span></div><div><b id="cd-s">–</b><span>Secs</span></div>
-  </div>
+  </div></div></div></div>
   <div class="stage3d"><div class="scratch fx-rise" data-3d id="scratch">
     <div class="under"><div class="w">Wednesday</div><div class="d">2</div><div class="m">December 2026</div></div>
     <canvas id="scr" width="680" height="424" aria-label="Scratch to reveal the date"></canvas>
@@ -312,11 +323,11 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 <section class="paper pad">
   <div class="kicker">With the blessings of our elders</div>
   <h2 class="h2">The Royal Couple</h2><div class="orn">✦</div>
-  <div class="couple stage3d">
-    <div class="fx-left" data-3d><div class="portrait"><div class="ph" style="background-position:36% 16%"></div><img src="img/oval.webp" alt="" loading="lazy"></div><div class="pname">Shivendra</div><p class="psub">S/o Mrs. Indira &amp;<br>Mr. Shailendra Khatri</p></div>
-    <div class="fx-right" data-3d><div class="portrait"><div class="ph" style="background-position:66% 27%"></div><img src="img/oval.webp" alt="" loading="lazy"></div><div class="pname">Roshni</div><p class="psub">D/o Mrs. Varsha &amp;<br>Mr. Dinesh Lalwani</p></div>
+  <div class="stage3d"><div class="mandap fx-tilt" data-3d><img src="img/mandap.webp" alt="" loading="lazy"><div class="mph"></div><div class="glare"></div></div></div>
+  <div class="couple">
+    <div><div class="pname">Shivendra</div><p class="psub">S/o Mrs. Indira &amp;<br>Mr. Shailendra Khatri</p></div>
+    <div><div class="pname">Roshni</div><p class="psub">D/o Mrs. Varsha &amp;<br>Mr. Dinesh Lalwani</p></div>
   </div>
-  <div class="stage3d"><div class="together fx-tilt" data-3d><div class="ph"></div><img src="img/arch.webp" alt="" loading="lazy"></div></div>
 </section>
 
 <!-- ================== FAMILY ================== -->
@@ -340,8 +351,8 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 <section class="pad" style="background:var(--ivory-2)">
   <div class="kicker">Where it all happens</div>
   <h2 class="h2">The Venue</h2><div class="orn">✦</div>
-  <div class="stage3d" style="margin-top:34px"><div class="frame fx-flip" data-3d>
-    <img class="f" src="img/frame-b8892f.webp" alt="" loading="lazy">
+  <div class="stage3d" style="margin-top:30px"><div class="gwcard fx-flip" data-3d>
+    <img src="img/gateway.webp" alt="" loading="lazy">
     <div class="in ev" style="--c:var(--maroon)">
       <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 44V22h36v22M14 22q10-18 20 0M24 6v6M10 44V32q4-5 8 0v12M30 44V32q4-5 8 0v12M20 44V30q4-6 8 0v14"/></svg>
       <h3>Sindhu Bhawan</h3>
@@ -349,7 +360,7 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
       <p>Barat departs from Radhe Radhe Hotel at 1:00 PM on 2nd December</p>
       <a class="btn gold" style="margin-top:10px;padding:12px 18px" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Sindhu+Bhawan+Torwa+Bilaspur+Chhattisgarh">Get Directions</a>
     </div>
-    <div class="glare" style="border-radius:40% 40% 4% 4%/26% 26% 2% 2%"></div>
+    <div class="glare"></div>
   </div></div>
   <div class="row2" style="max-width:330px;margin-left:auto;margin-right:auto">
     <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Shivendra%20%26%20Roshni%20Wedding&amp;dates=20261202T053000Z/20261202T163000Z&amp;location=Sindhu%20Bhawan%2C%20Torwa%2C%20Bilaspur%20(C.G.)&amp;details=Mukut%20Bandhan%2011%3A00%20AM%20%C2%B7%20Barat%201%3A00%20PM%20%C2%B7%20Reception%20%26%20Dinner%208%3A00%20PM%20onwards">Save Date</a>
@@ -363,18 +374,18 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
   <div class="kicker">Kindly</div>
   <h2 class="h2">Send Your Blessings</h2><div class="orn">✦</div>
   <p class="lead">Leave your wishes &amp; love for Shivendra &amp; Roshni</p>
-  <div class="stage3d"><form id="wishForm" class="fx-rise" data-3d>
+  <div class="stage3d"><div class="curtain fx-rise" data-3d><img src="img/curtain.webp" alt="" loading="lazy"><form id="wishForm">
     <label for="w-name">Your name<input id="w-name" type="text" autocomplete="name" placeholder="Your name" required></label>
     <label for="w-att">Will you join us?<select id="w-att"><option>Joyfully accept</option><option>Regretfully decline</option></select></label>
     <label for="w-msg">Your wish<textarea id="w-msg" placeholder="Write your heartfelt wish for the couple…"></textarea></label>
     <button class="btn" type="submit" id="w-send">Send on WhatsApp →</button>
     <a class="btn green" id="w-open" hidden target="_blank" rel="noopener">Open WhatsApp to send</a>
-  </form></div>
+  </form></div></div>
 </section>
 
 <!-- ================== CLOSING ================== -->
 <section class="closing pad">
-  <svg viewBox="0 0 448 60" style="position:absolute;left:0;top:0;width:100%;height:60px" preserveAspectRatio="none"><path d="M0 0H448V20 Q420 60 392 20 Q364 60 336 20 Q308 60 280 20 Q252 60 224 20 Q196 60 168 20 Q140 60 112 20 Q84 60 56 20 Q28 60 0 20Z" fill="#f8f2e6"/></svg>
+  <div class="closeimg" data-3d><img src="img/closing.webp" alt="The bride and groom at sunset" loading="lazy"></div>
   <div style="font-family:var(--hindi);color:var(--gold-hi);font-size:22px;margin-top:30px">आपकी उपस्थिति हमारा सौभाग्य</div>
   <p style="margin:6px 0 0;font-style:italic;color:#d5dcff">Your presence is our blessing</p>
   <div class="sig goldtext">Shivendra &amp; Roshni</div>
@@ -549,7 +560,7 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 
   // ---------- gate: fit the 400x800 world to the screen
   var gate=document.getElementById('gate'), world=document.getElementById('world'), baseScale=1;
-  function fit(){ baseScale=Math.max(innerWidth/400, innerHeight/800); if(innerWidth>700) baseScale=Math.max(innerHeight/800, 1); world.style.transform='scale('+baseScale+')'; }
+  function fit(){ baseScale=Math.max(innerWidth/400, innerHeight/800); if(innerWidth>700) baseScale=innerHeight/800; world.style.transform='scale('+baseScale+')'; }
   fit(); addEventListener('resize', function(){ if(gate.isConnected && !gate.classList.contains('fly')) fit(); });
 
   // ---------- pointer + gyro tilt → --tx / --ty
@@ -602,12 +613,11 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
     {n:'Reception & Dinner',h:'स्वागत समारोह',day:'Wednesday · 2nd December',t:'8:00 PM onwards',v:'Sindhu Bhawan, Torwa, Bilaspur',c:'#7a1426',ic:'<path d="M14 8v14a6 6 0 0 0 12 0V8M20 28v12M14 40h12M34 8v32M34 8q6 6 0 16"/>'}
   ];
   document.getElementById('fest').innerHTML=EV.map(function(e,i){ var left=i%2===0;
-    return '<div class="frame '+(left?'fx-left':'fx-right')+'" data-3d style="--c:'+e.c+'">'
-      +'<img class="f" src="img/frame-'+e.c.slice(1)+'.webp" alt="" loading="lazy">'
-      +'<svg class="feather" style="'+(left?'left:-10%':'right:-10%')+';bottom:6%;--r:'+(left?'-24deg':'24deg')+'" viewBox="0 0 60 190"><use href="#feather"/></svg>'
+    return '<div class="pcard '+(left?'fx-left':'fx-right')+'" data-3d style="--c:'+e.c+'">'
+      +'<img src="img/peacock.webp" alt="" loading="lazy">'
       +'<div class="in ev"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+e.ic+'</svg>'
       +'<div class="hn">'+e.h+'</div><h3>'+e.n+'</h3><div class="day">'+e.day+'</div><div class="t">'+e.t+'</div><p>'+e.v+'</p></div>'
-      +'<div class="glare" style="border-radius:40% 40% 4% 4%/26% 26% 2% 2%"></div></div>'; }).join('');
+      +'<div class="glare"></div></div>'; }).join('');
 
   // ---------- scroll-driven 3D
   var els=[].slice.call(document.querySelectorAll('[data-3d]')), pars=[].slice.call(document.querySelectorAll('[data-par]')), night=document.getElementById('night');
