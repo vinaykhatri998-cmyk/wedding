@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Make guest invitation links</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@500&display=swap">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#faf6ef;color:#5a4036;font-family:"Cormorant Garamond",Georgia,serif;font-size:19px}
+main{max-width:480px;margin:0 auto;padding:40px 22px 60px}
+h1{font-weight:500;font-size:34px;margin:0 0 6px;color:#a3605d}p{color:#9a8576;margin:0 0 18px;line-height:1.5}
+label{display:block;font-family:Jost,sans-serif;font-size:11px;letter-spacing:.2em;color:#5d6e52;margin:18px 0 8px}
+input{width:100%;font:inherit;font-size:20px;padding:12px 14px;border-radius:8px;border:1px solid #e2d6c6;background:#fffdf9;color:#5a4036}
+.out{margin-top:16px;padding:14px;border-radius:8px;background:#fffdf9;border:1px dashed #e2d6c6;word-break:break-all;font-family:ui-monospace,Menlo,monospace;font-size:14px;color:#a3605d;user-select:all}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.btn{display:flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:14px;background:#a3605d;color:#f6e6c9;font-family:Jost,sans-serif;font-size:12px;letter-spacing:.16em;text-decoration:none;cursor:pointer}
+.btn.wa{background:#5d6e52}.chips{display:flex;flex-wrap:wrap;gap:8px}.chips button{font:inherit;font-size:16px;border:1px solid #e2d6c6;background:none;color:#a3605d;border-radius:999px;padding:6px 12px;cursor:pointer}
+</style></head><body><main>
+<h1>Guest invitation links</h1>
+<p>Type a guest's name. Each guest gets a link that opens with <i>"Welcome, their name"</i> and <i>"Respected their name"</i>.</p>
+<label for="n">Guest name</label>
+<input id="n" placeholder="e.g. Chacha ji & Chachi ji" maxlength="60">
+<div class="chips" style="margin-top:12px">
+<button type="button">Chacha ji &amp; Chachi ji</button><button type="button">Mama ji &amp; Mami ji</button><button type="button">Bua ji &amp; Fufa ji</button><button type="button">Mausi ji &amp; Mausa ji</button><button type="button">Nana ji &amp; Nani ji</button><button type="button">Dear Friends</button>
+</div>
+<div class="out" id="out"></div>
+<div class="row"><button class="btn" id="copy" type="button">Copy link</button><a class="btn wa" id="wa" target="_blank" rel="noopener">Send on WhatsApp</a></div>
+<p style="margin-top:22px;font-size:16px">Tip: open the link once yourself to preview what your guest will see.</p>
+</main>
+<script>
+var base=location.href.replace(/make\.html.*$/,'');var n=document.getElementById('n'),out=document.getElementById('out'),wa=document.getElementById('wa');
+function upd(){var v=n.value.trim();var url=base+(v?'?to='+encodeURIComponent(v):'');out.textContent=url;
+var msg=(v?'Dear '+v+',\n':'')+'With great joy we invite you to the wedding of Shivendra & Roshni 💍\nWednesday, 2nd December 2026 · Sindhu Bhawan, Bilaspur\n\nOpen your invitation: '+url;
+wa.href='https://wa.me/?text='+encodeURIComponent(msg);}
+n.addEventListener('input',upd);document.querySelectorAll('.chips button').forEach(function(b){b.onclick=function(){n.value=b.textContent;upd();};});
+document.getElementById('copy').onclick=function(){var t=out.textContent,b=this;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent='Copied ✓';setTimeout(function(){b.textContent='Copy link'},1500)},function(){var r=document.createRange();r.selectNodeContents(out);var s=getSelection();s.removeAllRanges();s.addRange(r);});};
+upd();
+</script></body></html>
