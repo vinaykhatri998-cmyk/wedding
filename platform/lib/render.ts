@@ -90,7 +90,7 @@ export async function renderInvitation(tpl: Pick<Template, 'id' | 'html'>, d: In
     hasEvents: evs.length > 0, events: evs, days,
     hasFamily: d.show.family && d.family.length > 0, family: d.family,
     showCountdown: d.show.countdown && !!ts, showRsvp: d.show.rsvp && (!!phone || json.rsvpTracking),
-    hasCouplePhoto: !!photoC, couplePhoto: photoC, hasPortraits: !!(photoG && photoB),
+    hasCouplePhoto: !!photoC, couplePhoto: photoC, hasPortraits: !!(photoG && photoB), hasAnyPhoto: !!(photoC || (photoG && photoB)),
     ogImage: photoC || photoG || '',
     json: JSON.stringify(json).replace(/</g, '\\u003c'),
   }

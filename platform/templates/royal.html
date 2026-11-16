@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="{{theme}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Shivendra &amp; Roshni · Royal Wedding Invitation</title>
-<meta name="description" content="You are invited · Wednesday, 2nd December 2026 · Sindhu Bhawan, Bilaspur">
-<meta property="og:title" content="Shivendra & Roshni · Royal Wedding Invitation">
-<meta property="og:description" content="Tap the palace doors to open your invitation · 1–2 December 2026 · Bilaspur">
-<meta property="og:image" content="couple.jpg">
+<title>{{groom.name}} &amp; {{bride.name}} · Royal Wedding Invitation</title>
+<meta name="description" content="You are invited · {{dateLong}} · {{venueName}}">
+<meta property="og:title" content="{{groom.name}} &amp; {{bride.name}} · Royal Wedding Invitation">
+<meta property="og:description" content="Tap the palace doors to open your invitation">
+{{#ogImage}}<meta property="og:image" content="{{ogImage}}">{{/ogImage}}
 <meta name="theme-color" content="#e58a24">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -140,12 +140,12 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 /* couple */
 .couple{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
 .portrait{position:relative;aspect-ratio:4/5.4;transform-style:preserve-3d}
-.portrait .ph{position:absolute;left:14%;right:14%;top:11%;bottom:13%;border-radius:50%/46%;background-image:url(couple.jpg);background-repeat:no-repeat;background-size:300% auto;transform:translateZ(-1px);box-shadow:inset 0 0 20px rgba(0,0,0,.4)}
+.portrait .ph{position:absolute;left:14%;right:14%;top:11%;bottom:13%;border-radius:50%/46%;background:#ddd 50% 20%/cover no-repeat;transform:translateZ(-1px);box-shadow:inset 0 0 20px rgba(0,0,0,.4)}
 .portrait svg{position:absolute;inset:0;width:100%;height:100%;transform:translateZ(18px)}
 .pname{font-family:var(--display);font-weight:600;font-size:22px;color:var(--maroon);margin:8px 0 0}
 .psub{font-size:14px;font-style:italic;color:var(--muted);line-height:1.35;margin:2px 0 0}
 .together{margin:38px auto 0;width:100%;max-width:330px;aspect-ratio:4/5;position:relative;transform-style:preserve-3d}
-.together .ph{position:absolute;inset:7%;border-radius:150px 150px 8px 8px;background:url(couple.jpg) 50% 22%/cover;transform:translateZ(-1px)}
+.together .ph{position:absolute;inset:7%;border-radius:150px 150px 8px 8px;background:#ddd 50% 22%/cover;transform:translateZ(-1px)}
 .together svg{position:absolute;inset:0;width:100%;height:100%;transform:translateZ(22px)}
 
 /* family */
@@ -265,7 +265,7 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
     </svg>
     <svg class="lantern" style="left:60px" viewBox="0 0 34 150"><path d="M17 0V84" stroke="#8d6a26" stroke-width="1.5"/><path d="M9 86h16l5 8H4z" fill="#c9a14a"/><path d="M5 94 Q0 112 7 128 H27 Q34 112 29 94Z" fill="#ffd98a" stroke="#8d6a26" stroke-width="1.5"/><path d="M12 94V128M22 94V128" stroke="#8d6a26"/><path d="M7 128h20l-10 14z" fill="#c9a14a"/><circle cx="17" cy="111" r="16" fill="#fff3c2" opacity=".35"/></svg>
     <svg class="lantern b" style="left:306px" viewBox="0 0 34 150"><path d="M17 0V84" stroke="#8d6a26" stroke-width="1.5"/><path d="M9 86h16l5 8H4z" fill="#c9a14a"/><path d="M5 94 Q0 112 7 128 H27 Q34 112 29 94Z" fill="#ffd98a" stroke="#8d6a26" stroke-width="1.5"/><path d="M12 94V128M22 94V128" stroke="#8d6a26"/><path d="M7 128h20l-10 14z" fill="#c9a14a"/><circle cx="17" cy="111" r="16" fill="#fff3c2" opacity=".35"/></svg>
-    <div class="gate-title"><div class="k">The Wedding Of</div><div class="n">Shivendra &amp; Roshni</div><div class="g" id="gateGuest">You are invited</div></div>
+    <div class="gate-title"><div class="k">The Wedding Of</div><div class="n">{{groom.name}} &amp; {{bride.name}}</div><div class="g" id="gateGuest">You are invited</div></div>
     <button id="enter" type="button" aria-label="Open the palace doors">
       <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="#fff3c2" stroke-width="1.6"><path d="M12 3 9 6h2v6H7.5a1.5 1.5 0 0 0 0 3H9l-1.5 3.5L10 21h7l1.5-6-2-3H13V6h2z"/></svg></div>
       <span>Tap to enter</span>
@@ -299,10 +299,10 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
   <div id="skyl"></div>
   <svg class="layer" data-par="-.05" viewBox="0 0 448 120" preserveAspectRatio="xMidYMin slice" style="top:0;bottom:auto;height:17%"><g id="toran"></g></svg>
   <div class="hero-copy">
-    <div class="hin">॥ श्री गणेशाय नमः ॥ &nbsp;॥ जय झूलेलाल ॥</div>
+    <div class="hin">{{blessing}}</div>
     <div class="k">Together with their families</div>
-    <h1 class="goldtext">Shivendra</h1><div class="amp">weds</div><h1 class="goldtext" style="margin-top:0">Roshni</h1>
-    <div class="d">2nd December 2026 · Bilaspur</div>
+    <h1 class="goldtext">{{groom.name}}</h1><div class="amp">weds</div><h1 class="goldtext" style="margin-top:0">{{bride.name}}</h1>
+    <div class="d">{{#hasDate}}{{dayOrd}} {{month}} {{year}} · {{/hasDate}}{{venueName}}</div>
     <div class="guest" id="heroGuest"></div>
   </div>
   <div class="scrollcue">Scroll<i></i></div>
@@ -318,21 +318,21 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
       <svg class="feather" style="left:-9%;bottom:4%;--r:-22deg" viewBox="0 0 60 190"><use href="#feather"/></svg>
       <svg class="feather" style="right:-9%;bottom:4%;--r:22deg" viewBox="0 0 60 190"><use href="#feather"/></svg>
       <div class="in" style="top:24%;left:13%;right:13%">
-        <div class="hin">॥ श्री गणेशाय नमः ॥</div>
-        <p id="respect">Mrs. Indira &amp; Mr. Shailendra Khatri<br>solicit your gracious presence and blessings at the wedding of their beloved son</p>
-        <div class="nm goldtext">Shivendra</div>
-        <div class="par">Grandson of Late Mrs. Radhika Devi<br>&amp; Mr. Hargovind Khatri</div>
+        <div class="hin">{{blessing}}</div>
+        <p id="respect">{{hostLine}}</p>
+        <div class="nm goldtext">{{groom.name}}</div>
+        <div class="par">{{#groom.parents}}S/o {{groom.parents}}{{/groom.parents}}{{#groom.grandparents}}<br>Grandson of {{groom.grandparents}}{{/groom.grandparents}}</div>
         <div class="amp">&amp;</div>
-        <div class="nm goldtext">Roshni</div>
-        <div class="par">D/o Mrs. Varsha &amp; Mr. Dinesh Lalwani<br>Grand D/o Mrs. Dropati &amp; Late Mr. Girdhari Lal Lalwani</div>
-        <div class="dt">Wednesday · 2nd December 2026</div>
+        <div class="nm goldtext">{{bride.name}}</div>
+        <div class="par">{{#bride.parents}}D/o {{bride.parents}}{{/bride.parents}}{{#bride.grandparents}}<br>Grand D/o {{bride.grandparents}}{{/bride.grandparents}}</div>
+        <div class="dt">{{dateLong}}</div>
       </div>
       <div class="glare" style="border-radius:40% 40% 4% 4%/26% 26% 2% 2%"></div>
     </div>
   </div>
 </section>
 
-<!-- ================== COUNTDOWN + SCRATCH ================== -->
+{{#hasDate}}<!-- COUNTDOWN + SCRATCH -->
 <section class="pad" style="background:var(--ivory-2)">
   <div class="kicker">Counting the moments</div>
   <h2 class="h2">Until We Say “I Do”</h2><div class="orn">✦</div>
@@ -340,39 +340,28 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
     <div><b id="cd-d">–</b><span>Days</span></div><div><b id="cd-h">–</b><span>Hours</span></div><div><b id="cd-m">–</b><span>Mins</span></div><div><b id="cd-s">–</b><span>Secs</span></div>
   </div>
   <div class="stage3d"><div class="scratch fx-rise" data-3d id="scratch">
-    <div class="under"><div class="w">Wednesday</div><div class="d">2</div><div class="m">December 2026</div></div>
+    <div class="under"><div class="w">{{weekday}}</div><div class="d">{{dayNum}}</div><div class="m">{{month}} {{year}}</div></div>
     <canvas id="scr" width="680" height="424" aria-label="Scratch to reveal the date"></canvas>
   </div></div>
   <p class="after" id="after">Scratch the gold card to reveal the date</p>
 </section>
 
-<!-- ================== ROYAL COUPLE ================== -->
-<section class="paper pad">
+{{/hasDate}}{{#hasAnyPhoto}}<section class="paper pad">
   <div class="kicker">With the blessings of our elders</div>
   <h2 class="h2">The Royal Couple</h2><div class="orn">✦</div>
-  <div class="couple stage3d">
-    <div class="fx-left" data-3d><div class="portrait"><div class="ph" style="background-position:36% 16%"></div><svg viewBox="0 0 200 270"><use href="#ovalFrame"/></svg></div><div class="pname">Shivendra</div><p class="psub">S/o Mrs. Indira &amp;<br>Mr. Shailendra Khatri</p></div>
-    <div class="fx-right" data-3d><div class="portrait"><div class="ph" style="background-position:66% 27%"></div><svg viewBox="0 0 200 270"><use href="#ovalFrame"/></svg></div><div class="pname">Roshni</div><p class="psub">D/o Mrs. Varsha &amp;<br>Mr. Dinesh Lalwani</p></div>
-  </div>
-  <div class="stage3d"><div class="together fx-tilt" data-3d><div class="ph"></div><svg viewBox="0 0 320 400"><use href="#archFrame"/></svg></div></div>
-</section>
+  {{#hasPortraits}}<div class="couple stage3d">
+    <div class="fx-left" data-3d><div class="portrait"><div class="ph" style="background-image:url('{{groom.photo}}')"></div><svg viewBox="0 0 200 270"><use href="#ovalFrame"/></svg></div><div class="pname">{{groom.name}}</div>{{#groom.parents}}<p class="psub">S/o {{groom.parents}}</p>{{/groom.parents}}</div>
+    <div class="fx-right" data-3d><div class="portrait"><div class="ph" style="background-image:url('{{bride.photo}}')"></div><svg viewBox="0 0 200 270"><use href="#ovalFrame"/></svg></div><div class="pname">{{bride.name}}</div>{{#bride.parents}}<p class="psub">D/o {{bride.parents}}</p>{{/bride.parents}}</div>
+  </div>{{/hasPortraits}}
+  {{#hasCouplePhoto}}<div class="stage3d"><div class="together fx-tilt" data-3d><div class="ph" style="background-image:url('{{couplePhoto}}')"></div><svg viewBox="0 0 320 400"><use href="#archFrame"/></svg></div></div>{{/hasCouplePhoto}}
+</section>{{/hasAnyPhoto}}
 
-<!-- ================== FAMILY ================== -->
-<section class="pad" style="background:var(--ivory-2)">
-  <div class="kicker">Our pillars of strength</div>
-  <h2 class="h2">Our Family</h2><div class="orn">✦</div>
-  <div class="fam stage3d">
-    <div class="famcard fx-left" data-3d><div class="k">The Groom's Family</div><h3>Khatri Family</h3><p>Mrs. Indira &amp; Mr. Shailendra Khatri<small>Parents</small></p><p>Late Mrs. Radhika Devi &amp; Mr. Hargovind Khatri<small>Grandparents</small></p></div>
-    <div class="famcard fx-right" data-3d><div class="k">The Bride's Family</div><h3>Lalwani Family</h3><p>Mrs. Varsha &amp; Mr. Dinesh Lalwani<small>Parents</small></p><p>Mrs. Dropati &amp; Late Mr. Girdhari Lal Lalwani<small>Grandparents</small></p></div>
-  </div>
-</section>
-
-<!-- ================== FESTIVITIES ================== -->
+{{#hasEvents}}<!-- FESTIVITIES -->
 <section class="paper pad">
   <div class="kicker">Join us in celebration</div>
   <h2 class="h2">The Royal Festivities</h2><div class="orn">✦</div>
   <div class="fest stage3d" id="fest"></div>
-</section>
+</section>{{/hasEvents}}
 
 <!-- ================== VENUE ================== -->
 <section class="pad" style="background:var(--ivory-2)">
@@ -382,47 +371,43 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
     <svg class="f" viewBox="0 0 300 440"><use href="#frameLight" style="--c:#b8892f"/></svg>
     <div class="in ev" style="--c:var(--maroon)">
       <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 44V22h36v22M14 22q10-18 20 0M24 6v6M10 44V32q4-5 8 0v12M30 44V32q4-5 8 0v12M20 44V30q4-6 8 0v14"/></svg>
-      <h3>Sindhu Bhawan</h3>
-      <p style="font-size:17px">Torwa, Bilaspur<br>Chhattisgarh</p>
-      <p>Barat departs from Radhe Radhe Hotel at 1:00 PM on 2nd December</p>
-      <a class="btn gold" style="margin-top:10px;padding:12px 18px" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Sindhu+Bhawan+Torwa+Bilaspur+Chhattisgarh">Get Directions</a>
+      <h3>{{venueName}}</h3>
+      <p style="font-size:17px">{{venueAddress}}</p>
+      {{#note}}<p>{{note}}</p>{{/note}}
+      {{#mapUrl}}<a class="btn gold" style="margin-top:10px;padding:12px 18px" target="_blank" rel="noopener" href="{{mapUrl}}">Get Directions</a>{{/mapUrl}}
     </div>
     <div class="glare" style="border-radius:40% 40% 4% 4%/26% 26% 2% 2%"></div>
   </div></div>
   <div class="row2" style="max-width:330px;margin-left:auto;margin-right:auto">
-    <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Shivendra%20%26%20Roshni%20Wedding&amp;dates=20261202T053000Z/20261202T163000Z&amp;location=Sindhu%20Bhawan%2C%20Torwa%2C%20Bilaspur%20(C.G.)&amp;details=Mukut%20Bandhan%2011%3A00%20AM%20%C2%B7%20Barat%201%3A00%20PM%20%C2%B7%20Reception%20%26%20Dinner%208%3A00%20PM%20onwards">Save Date</a>
-    <a class="btn green" target="_blank" rel="noopener" href="https://wa.me/919713669838">WhatsApp</a>
+    {{#calUrl}}<a class="btn" target="_blank" rel="noopener" href="{{calUrl}}">Save Date</a>{{/calUrl}}
+    {{#hasPhone}}<a class="btn green" target="_blank" rel="noopener" href="https://wa.me/{{phone}}">WhatsApp</a>{{/hasPhone}}
   </div>
-  <p class="lead" style="font-size:16px">Khatri Family · <a href="tel:+919713669838" style="color:var(--maroon)">97136 69838</a></p>
+  {{#hasPhone}}<p class="lead" style="font-size:16px">Contact · <a href="tel:+{{phone}}" style="color:var(--maroon)">{{phoneDisplay}}</a></p>{{/hasPhone}}
 </section>
 
-<!-- ================== WISHES ================== -->
+{{#showRsvp}}<!-- WISHES -->
 <section class="paper pad wish">
   <div class="kicker">Kindly</div>
   <h2 class="h2">Send Your Blessings</h2><div class="orn">✦</div>
-  <p class="lead">Leave your wishes &amp; love for Shivendra &amp; Roshni</p>
+  <p class="lead">Leave your wishes &amp; love for {{groom.name}} &amp; {{bride.name}}</p>
   <div class="stage3d"><form id="wishForm" class="fx-rise" data-3d>
     <label for="w-name">Your name<input id="w-name" type="text" autocomplete="name" placeholder="Your name" required></label>
     <label for="w-att">Will you join us?<select id="w-att"><option>Joyfully accept</option><option>Regretfully decline</option></select></label>
     <label for="w-msg">Your wish<textarea id="w-msg" placeholder="Write your heartfelt wish for the couple…"></textarea></label>
-    <button class="btn" type="submit" id="w-send">Send on WhatsApp →</button>
+    <button class="btn" type="submit" id="w-send">Send →</button>
+    <p id="w-ok" hidden style="text-align:center;margin:0">Thank you! Your reply has been sent. ✨</p>
     <a class="btn green" id="w-open" hidden target="_blank" rel="noopener">Open WhatsApp to send</a>
   </form></div>
-</section>
+</section>{{/showRsvp}}
 
 <!-- ================== CLOSING ================== -->
 <section class="closing pad">
   <svg viewBox="0 0 448 60" style="position:absolute;left:0;top:0;width:100%;height:60px" preserveAspectRatio="none"><path d="M0 0H448V20 Q420 60 392 20 Q364 60 336 20 Q308 60 280 20 Q252 60 224 20 Q196 60 168 20 Q140 60 112 20 Q84 60 56 20 Q28 60 0 20Z" fill="#f8f2e6"/></svg>
   <div style="font-family:var(--hindi);color:var(--gold-hi);font-size:22px;margin-top:30px">आपकी उपस्थिति हमारा सौभाग्य</div>
   <p style="margin:6px 0 0;font-style:italic;color:#d5dcff">Your presence is our blessing</p>
-  <div class="sig goldtext">Shivendra &amp; Roshni</div>
-  <div style="font-family:var(--caps);font-size:10px;letter-spacing:.28em;color:#cfd8ff">Khatri Family welcomes you</div>
-  <div class="names">
-    <div><h4>Awaiting your presence</h4><p>Mr. Hargovind Khatri · Mr. Shyam Sunder Khatri · Mrs. Lata Khatri · Mr. Mohan Khatri · Mr. Rajesh Khatri · Mrs. Ganga Khatri · All Khatri Family, Relatives &amp; Friends</p></div>
-    <div><h4>A cordial invitation</h4><p>Mr. Manoj Devnani · Mrs. Reena Devnani · Mr. Jitendra Khatri · Mrs. Payal Khatri · Mr. Ravindra Khatri · Mrs. Juhi Khatri · Mr. Mahesh Tilwani · Mr. Satish Tilwani</p></div>
-    <div><h4>Welcome you</h4><p>Mrs. Aanchal &amp; Mr. Pervesh Malghani · Mrs. Shivani &amp; Mr. Gyan Chawla</p></div>
-    <div><h4>Sharing our joy</h4><p>Shubham, Vinay, Pushpendra, Khushi, Durgesh, Meenakshi, Ayush, Sparsh, Aastha, Prakhar, Kashak, Aakansha, Vihan, Love, Laksh</p></div>
-  </div>
+  <div class="sig goldtext">{{groom.name}} &amp; {{bride.name}}</div>
+  <div style="font-family:var(--caps);font-size:10px;letter-spacing:.28em;color:#cfd8ff">We await your presence</div>
+  {{#hasFamily}}<div class="fam">{{#family}}<div>{{#title}}<h4>{{title}}</h4>{{/title}}<p>{{names}}</p></div>{{/family}}</div>{{/hasFamily}}
 </section>
 </div>
 
@@ -476,12 +461,12 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 <script>
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var root = document.documentElement, PHONE='919713669838', WEDDING=new Date('2026-12-02T11:00:00+05:30').getTime();
+  var root = document.documentElement, INV={{{json}}}, PHONE=INV.phone, WEDDING=INV.ts;
 
   // ---------- personal guest name: ?to=
-  var guest=''; try{ guest=(new URLSearchParams(location.search).get('to')||'').trim().slice(0,60);}catch(e){}
+  var guest=''; if(INV.guestLinks) try{ guest=(new URLSearchParams(location.search).get('to')||'').trim().slice(0,60);}catch(e){}
   if(guest){ document.getElementById('gateGuest').textContent='An invitation for '+guest; document.getElementById('heroGuest').textContent='Dear '+guest+', you are warmly invited';
-    document.title='Invitation for '+guest+' · Shivendra & Roshni'; }
+    document.title='Invitation for '+guest+' · '+INV.names; }
 
   // ---------- gate: fit the 400x800 world to the screen
   var gate=document.getElementById('gate'), world=document.getElementById('world'), baseScale=1;
@@ -530,19 +515,15 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
     (function f(t){ g.clearRect(0,0,W,H); ps.forEach(function(q){ q.y-=q.v; if(q.y<-.02) q.y=1.02; var a=.25+.55*Math.abs(Math.sin(t/800+q.p)); var x=q.x*W+Math.sin(t/1600+q.p)*14+cx*10; g.fillStyle='rgba(212,166,64,'+a+')'; g.beginPath(); g.arc(x,q.y*H,q.r,0,6.28); g.fill(); }); requestAnimationFrame(f); })(0); })();
 
   // ---------- festivities cards
-  var EV=[
-    {n:'Sath',h:'साठ',day:'Tuesday · 1st December',t:'5:00 PM',v:'Sindhu Bhawan, Torwa, Bilaspur',c:'#c2611a',ic:'<path d="M24 6c6 8 10 12 10 20a10 10 0 0 1-20 0c0-8 4-12 10-20z"/><path d="M10 40h28M14 44h20"/>'},
-    {n:'Tel Bukki',h:'तेल बुक्की',day:'Tuesday · 1st December',t:'6:00 PM',v:'Sindhu Bhawan, Torwa, Bilaspur',c:'#b8860b',ic:'<path d="M12 26h24a12 12 0 0 1-24 0z"/><path d="M8 26h32M24 14v8M18 10q6 6 0 12M30 10q-6 6 0 12"/>'},
-    {n:'Mukut Bandhan',h:'मुकुट बंधन',day:'Wednesday · 2nd December',t:'11:00 AM',v:'Sindhu Bhawan, Torwa, Bilaspur',c:'#0f7a78',ic:'<path d="M8 36l4-20 8 10 4-16 4 16 8-10 4 20z"/><path d="M8 40h32"/><circle cx="24" cy="8" r="2"/>'},
-    {n:'Barat',h:'बारात',day:'Wednesday · 2nd December',t:'1:00 PM',v:'From Radhe Radhe Hotel to Sindhu Bhawan',c:'#1f5fbf',ic:'<path d="M8 34h30l-4-12H18l-4 6H8z"/><circle cx="16" cy="36" r="4"/><circle cx="32" cy="36" r="4"/><path d="M24 22v-8l8 3"/>'},
-    {n:'Reception & Dinner',h:'स्वागत समारोह',day:'Wednesday · 2nd December',t:'8:00 PM onwards',v:'Sindhu Bhawan, Torwa, Bilaspur',c:'#7a1426',ic:'<path d="M14 8v14a6 6 0 0 0 12 0V8M20 28v12M14 40h12M34 8v32M34 8q6 6 0 16"/>'}
-  ];
-  document.getElementById('fest').innerHTML=EV.map(function(e,i){ var left=i%2===0;
+  var ICS=['<path d="M24 6c6 8 10 12 10 20a10 10 0 0 1-20 0c0-8 4-12 10-20z"/><path d="M10 40h28M14 44h20"/>','<path d="M12 26h24a12 12 0 0 1-24 0z"/><path d="M8 26h32M24 14v8M18 10q6 6 0 12M30 10q-6 6 0 12"/>','<path d="M8 36l4-20 8 10 4-16 4 16 8-10 4 20z"/><path d="M8 40h32"/><circle cx="24" cy="8" r="2"/>','<path d="M14 8v14a6 6 0 0 0 12 0V8M20 28v12M14 40h12M34 8v32M34 8q6 6 0 16"/>'], COLS=['#c2611a','#0f7a78','#1f5fbf','#7a1426','#b8860b'];
+  function esc(t){ var d=document.createElement('div'); d.textContent=t||''; return d.innerHTML; }
+  var EV=INV.events.map(function(e,i){ return {n:esc(e.name),day:esc(e.day),t:esc(e.time),v:esc(e.venue),c:COLS[i%COLS.length],ic:ICS[i%ICS.length]}; });
+  var festEl=document.getElementById('fest'); if(festEl) festEl.innerHTML=EV.map(function(e,i){ var left=i%2===0;
     return '<div class="frame '+(left?'fx-left':'fx-right')+'" data-3d style="--c:'+e.c+'">'
       +'<svg class="f" viewBox="0 0 300 440"><use href="#frameLight"/></svg>'
       +'<svg class="feather" style="'+(left?'left:-10%':'right:-10%')+';bottom:6%;--r:'+(left?'-24deg':'24deg')+'" viewBox="0 0 60 190"><use href="#feather"/></svg>'
       +'<div class="in ev"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+e.ic+'</svg>'
-      +'<div class="hn">'+e.h+'</div><h3>'+e.n+'</h3><div class="day">'+e.day+'</div><div class="t">'+e.t+'</div><p>'+e.v+'</p></div>'
+      +'<h3>'+e.n+'</h3><div class="day">'+e.day+'</div><div class="t">'+e.t+'</div><p>'+e.v+'</p></div>'
       +'<div class="glare" style="border-radius:40% 40% 4% 4%/26% 26% 2% 2%"></div></div>'; }).join('');
 
   // ---------- scroll-driven 3D
@@ -556,12 +537,12 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 
   // ---------- countdown
   function pad(n){ return String(n).padStart(2,'0'); }
-  function setv(id,v){ var el=document.getElementById(id); if(el.textContent!==String(v)){ el.textContent=v; el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); } }
+  function setv(id,v){ var el=document.getElementById(id); if(!el) return; if(el.textContent!==String(v)){ el.textContent=v; el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); } }
   function tickc(){ var t=Math.max(0,WEDDING-Date.now()); setv('cd-d',Math.floor(t/864e5)); setv('cd-h',pad(Math.floor(t/36e5)%24)); setv('cd-m',pad(Math.floor(t/6e4)%60)); setv('cd-s',pad(Math.floor(t/1e3)%60)); }
   tickc(); setInterval(tickc,1000);
 
   // ---------- scratch card
-  var sw=document.getElementById('scratch'), sc=document.getElementById('scr'), x=sc.getContext('2d'), done=false;
+  var sw=document.getElementById('scratch'), sc=document.getElementById('scr'); if(sc){ var x=sc.getContext('2d'), done=false;
   var gg=x.createLinearGradient(0,0,680,424); gg.addColorStop(0,'#b88a2e'); gg.addColorStop(.35,'#f3d98f'); gg.addColorStop(.55,'#c99a3c'); gg.addColorStop(.8,'#f6e2a8'); gg.addColorStop(1,'#9c7322');
   x.fillStyle=gg; x.fillRect(0,0,680,424);
   for(var n=0;n<1600;n++){ x.fillStyle='rgba(255,255,255,'+Math.random()*.35+')'; x.fillRect(Math.random()*680,Math.random()*424,1.5,1.5); }
@@ -570,20 +551,22 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
   var drawing=false,last=null;
   function pos(e){ var b=sc.getBoundingClientRect(); return {x:(e.clientX-b.left)*680/b.width,y:(e.clientY-b.top)*424/b.height}; }
   function scr(p){ x.globalCompositeOperation='destination-out'; x.lineCap='round'; x.lineWidth=72; x.beginPath(); x.moveTo((last||p).x,(last||p).y); x.lineTo(p.x,p.y); x.stroke(); last=p; }
-  function check(){ if(done) return; var d=x.getImageData(0,0,680,424).data,c=0,t=0; for(var i=3;i<d.length;i+=4*97){ t++; if(d[i]<40) c++; } if(c/t>.5){ done=true; sw.classList.add('done'); document.getElementById('after').textContent='See you on 2nd December!'; confetti(); } }
+  function check(){ if(done) return; var d=x.getImageData(0,0,680,424).data,c=0,t=0; for(var i=3;i<d.length;i+=4*97){ t++; if(d[i]<40) c++; } if(c/t>.5){ done=true; sw.classList.add('done'); document.getElementById('after').textContent='See you there!'; confetti(); } }
   sc.addEventListener('pointerdown',function(e){ drawing=true; last=null; sc.setPointerCapture(e.pointerId); scr(pos(e)); });
   sc.addEventListener('pointermove',function(e){ if(drawing) scr(pos(e)); });
-  ['pointerup','pointercancel'].forEach(function(t){ sc.addEventListener(t,function(){ drawing=false; last=null; check(); }); });
+  ['pointerup','pointercancel'].forEach(function(t){ sc.addEventListener(t,function(){ drawing=false; last=null; check(); }); }); }
   function confetti(){ if(reduce) return; var cv=document.createElement('canvas'); cv.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60'; document.body.appendChild(cv);
     var g=cv.getContext('2d'); cv.width=innerWidth; cv.height=innerHeight; var cols=['#c9a14a','#f6e3a6','#7a1426','#0f7a78','#1f5fbf','#ef7d1a'];
     var ps=[]; for(var i=0;i<150;i++) ps.push({x:innerWidth/2,y:innerHeight*.5,vx:(Math.random()-.5)*14,vy:-Math.random()*14-4,r:3+Math.random()*4,c:cols[i%6],a:Math.random()*6});
     (function s(){ g.clearRect(0,0,cv.width,cv.height); var alive=false; ps.forEach(function(p){ p.vy+=.28; p.x+=p.vx; p.y+=p.vy; p.a+=.14; if(p.y<cv.height+20) alive=true; g.save(); g.translate(p.x,p.y); g.rotate(p.a); g.scale(1,Math.cos(p.a*1.7)); g.fillStyle=p.c; g.fillRect(-p.r,-p.r/2,p.r*2,p.r); g.restore(); }); if(alive) requestAnimationFrame(s); else cv.remove(); })(); }
 
   // ---------- wishes
-  document.getElementById('wishForm').addEventListener('submit',function(e){ e.preventDefault();
+  var wf=document.getElementById('wishForm'); if(wf) wf.addEventListener('submit',function(e){ e.preventDefault();
     var n=document.getElementById('w-name').value.trim(), at=document.getElementById('w-att').value, m=document.getElementById('w-msg').value.trim(); if(!n) return;
-    var msg='💌 For Shivendra & Roshni\nFrom: '+n+'\n'+at+(m?'\n\n'+m:''); var url='https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg);
-    var a=document.getElementById('w-open'); a.href=url; a.hidden=false; document.getElementById('w-send').hidden=true; window.open(url,'_blank'); });
+    var btn=document.getElementById('w-send');
+    if(INV.rsvpTracking){ btn.disabled=true; SN.post({slug:INV.slug,name:n,attending:at.indexOf('accept')>-1,message:m}).then(function(ok){ btn.disabled=false; if(ok){ btn.hidden=true; document.getElementById('w-ok').hidden=false; } else alert('Could not send. Please try again.'); },function(){ btn.disabled=false; alert('Could not send. Please try again.'); }); return; }
+    var msg='💌 RSVP · '+INV.names+'\nFrom: '+n+'\n'+at+(m?'\n\n'+m:''); var url='https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg);
+    var a=document.getElementById('w-open'); a.href=url; a.hidden=false; btn.hidden=true; window.open(url,'_blank'); });
 })();
 </script>
 </body>

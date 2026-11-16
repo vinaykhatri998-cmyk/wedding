@@ -148,7 +148,13 @@ insert into templates (id, name, category, tier, description, sort, themes) valu
  ('luxury', 'Heirloom Gold', 'Traditional', 'standard', 'Deep maroon and gold leaf, with a classic unveiling.', 2,
   '[{"id":"","name":"Maroon & Gold","swatch":"#7a1e2e"},{"id":"emerald","name":"Emerald","swatch":"#0f5a46"},{"id":"navy","name":"Royal Navy","swatch":"#1b2a5c"}]'),
  ('royal', 'Palace Gates', 'Royal', 'premium', 'Three-dimensional palace doors swing open and guests walk inside.', 3,
-  '[{"id":"","name":"Saffron & Lapis","swatch":"#e58a24"},{"id":"rose","name":"Rose Palace","swatch":"#c0516b"},{"id":"emerald","name":"Emerald Court","swatch":"#1d7a5a"}]');
+  '[{"id":"","name":"Saffron & Lapis","swatch":"#e58a24"}]');
 
 insert into settings (key, value) values
  ('upi_id', ''), ('upi_name', 'Shubh Nimantran'), ('whatsapp', ''), ('banner', ''), ('qr_image', '');
+
+-- counts one use of a coupon (safe when two orders arrive together)
+create function public.use_coupon(c text) returns void language sql security definer set search_path = public as $$
+  update coupons set used = used + 1 where code = c;
+$$;
+revoke execute on function public.use_coupon(text) from public, anon, authenticated;
