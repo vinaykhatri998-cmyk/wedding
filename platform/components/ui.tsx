@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { hasThumb } from '@/lib/catalog'
 import type { Package, Template } from '@/lib/types'
 import { rupees } from '@/lib/types'
 
@@ -6,8 +7,10 @@ export function TemplateCard({ t }: { t: Template }) {
   return (
     <Link className="tcard" href={'/templates/' + t.id}>
       <div className="img">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={'/thumbs/' + t.id + '.jpg'} alt={t.name + ' wedding invitation design'} loading="lazy" />
+        {hasThumb(t.id)
+          // eslint-disable-next-line @next/next/no-img-element
+          ? <img src={'/thumbs/' + t.id + '.jpg'} alt={t.name + ' wedding invitation design'} loading="lazy" />
+          : <iframe src={'/demo/' + t.id} title={t.name} loading="lazy" tabIndex={-1} style={{ width: '390px', height: '488px', border: 0, transform: 'scale(var(--s,.9))', transformOrigin: '0 0', pointerEvents: 'none' }} />}
         {t.tier === 'premium' && <span className="tag gold">Premium</span>}
       </div>
       <div className="body">

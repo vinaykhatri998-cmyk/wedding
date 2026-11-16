@@ -171,6 +171,15 @@ export async function saveTemplate(f: FormData) {
   revalidatePath('/', 'layout')
   redirect('/admin/templates?ok=1')
 }
+export async function addBuiltinTemplate(f: FormData) {
+  await requireAdmin()
+  const { CATALOG } = await import('@/lib/catalog')
+  const id = str(f, 'id', 40), c = CATALOG[id]
+  if (!c) return
+  await t('templates').upsert({ id, name: c.name, category: c.category, tier: c.tier, description: c.description, themes: c.themes, sort: c.sort, active: true, html: null })
+  revalidatePath('/', 'layout')
+  redirect('/admin/templates?ok=1')
+}
 export async function deleteTemplate(f: FormData) {
   await requireAdmin()
   const id = str(f, 'id', 40)
