@@ -1,4 +1,5 @@
-import { deleteTemplate, saveTemplate } from '@/app/actions'
+import { addBuiltinTemplate, deleteTemplate, saveTemplate } from '@/app/actions'
+import { CATALOG } from '@/lib/catalog'
 import { getTemplates, t } from '@/lib/data'
 
 export default async function Templates({ searchParams }: { searchParams: Promise<{ ok?: string; err?: string }> }) {
@@ -20,6 +21,12 @@ export default async function Templates({ searchParams }: { searchParams: Promis
       <h1 style={{ fontSize: 40 }}>Designs</h1>
       {sp.ok && <div className="alert ok">Saved.</div>}
       {sp.err && <div className="alert bad">{sp.err}</div>}
+      {Object.entries(CATALOG).filter(([id]) => !templates.some((x) => x.id === id)).map(([id, c]) => (
+        <div className="card row between" key={id} style={{ borderColor: 'var(--gold)' }}>
+          <div><span className="tag gold">New design ready</span><h2 style={{ fontSize: 26, marginTop: 8 }}>{c.name}</h2><p className="muted small">{c.description}</p></div>
+          <div className="row"><a className="btn sm ghost" href={'/demo/' + id} target="_blank" rel="noopener">Preview ↗</a><form action={addBuiltinTemplate}><input type="hidden" name="id" value={id} /><button className="btn sm">Add to website</button></form></div>
+        </div>
+      ))}
       <p className="muted">Rename, hide, reorder or change the level of any design. To add a new design, upload its design file below; it appears on the website immediately.</p>
       <div className="grid g2">
         {templates.map((x) => (
