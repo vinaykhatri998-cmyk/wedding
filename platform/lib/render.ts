@@ -42,10 +42,12 @@ export type RenderOpts = {
 }
 
 async function signed(pathsIn: string[]): Promise<Record<string, string>> {
-  const paths = pathsIn.filter(Boolean)
-  if (!paths.length) return {}
-  const { data } = await db().storage.from('photos').createSignedUrls(paths, 60 * 60 * 12)
   const out: Record<string, string> = {}
+  // sample photos for design previews are ordinary public files, not private uploads
+  for (const p of pathsIn) if (p && p.startsWith('/samples/')) out[p] = p
+  const paths = pathsIn.filter((p) => p && !p.startsWith('/samples/'))
+  if (!paths.length) return out
+  const { data } = await db().storage.from('photos').createSignedUrls(paths, 60 * 60 * 12)
   for (const r of data || []) if (r.path && r.signedUrl) out[r.path] = r.signedUrl
   return out
 }
