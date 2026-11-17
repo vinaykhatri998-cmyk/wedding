@@ -1,14 +1,102 @@
 {
-  "floral": { "name": "Garden Letter", "category": "Floral", "tier": "standard", "sort": 1,
+  "floral": {
+    "name": "Garden Letter",
+    "category": "Floral",
+    "tier": "standard",
+    "sort": 1,
     "description": "A wax-sealed envelope opens into a soft garden of blush roses and sage leaves.",
-    "themes": [{"id":"","name":"Blush & Sage","swatch":"#c98b86"},{"id":"lavender","name":"Lavender","swatch":"#8f7fb5"},{"id":"blue","name":"Dusty Blue","swatch":"#6f8fb0"}] },
-  "luxury": { "name": "Heirloom Gold", "category": "Traditional", "tier": "standard", "sort": 2,
+    "themes": [
+      {
+        "id": "",
+        "name": "Blush & Sage",
+        "swatch": "#c98b86"
+      },
+      {
+        "id": "lavender",
+        "name": "Lavender",
+        "swatch": "#8f7fb5"
+      },
+      {
+        "id": "blue",
+        "name": "Dusty Blue",
+        "swatch": "#6f8fb0"
+      }
+    ]
+  },
+  "luxury": {
+    "name": "Heirloom Gold",
+    "category": "Traditional",
+    "tier": "standard",
+    "sort": 2,
     "description": "Deep maroon and gold leaf, with a classic unveiling.",
-    "themes": [{"id":"","name":"Maroon & Gold","swatch":"#7a1e2e"},{"id":"emerald","name":"Emerald","swatch":"#0f5a46"},{"id":"navy","name":"Royal Navy","swatch":"#1b2a5c"}] },
-  "royal": { "name": "Palace Gates", "category": "Royal", "tier": "premium", "sort": 3,
+    "themes": [
+      {
+        "id": "",
+        "name": "Maroon & Gold",
+        "swatch": "#7a1e2e"
+      },
+      {
+        "id": "emerald",
+        "name": "Emerald",
+        "swatch": "#0f5a46"
+      },
+      {
+        "id": "navy",
+        "name": "Royal Navy",
+        "swatch": "#1b2a5c"
+      }
+    ]
+  },
+  "royal": {
+    "name": "Palace Gates",
+    "category": "Royal",
+    "tier": "premium",
+    "sort": 3,
     "description": "Three-dimensional palace doors swing open and guests walk inside.",
-    "themes": [{"id":"","name":"Saffron & Lapis","swatch":"#e58a24"}] },
-  "temple": { "name": "Temple Lamp", "category": "South Indian", "tier": "standard", "sort": 4,
+    "themes": [
+      {
+        "id": "",
+        "name": "Saffron & Lapis",
+        "swatch": "#e58a24"
+      }
+    ]
+  },
+  "temple": {
+    "name": "Temple Lamp",
+    "category": "South Indian",
+    "tier": "standard",
+    "sort": 4,
     "description": "Guests light a brass kuthuvilakku to open it, beneath a temple gopuram, banana leaves and a mango-leaf thoranam.",
-    "themes": [{"id":"","name":"Banana Leaf & Gold","swatch":"#164536"},{"id":"maroon","name":"Kumkum Maroon","swatch":"#7c1d2e"},{"id":"ivory","name":"Jasmine Ivory","swatch":"#e3d3ac"}] }
+    "themes": [
+      {
+        "id": "",
+        "name": "Banana Leaf & Gold",
+        "swatch": "#164536"
+      },
+      {
+        "id": "maroon",
+        "name": "Kumkum Maroon",
+        "swatch": "#7c1d2e"
+      },
+      {
+        "id": "ivory",
+        "name": "Jasmine Ivory",
+        "swatch": "#e3d3ac"
+      }
+    ]
+  },
+  "lantern": {
+    "name": "Lantern Palace",
+    "category": "Royal",
+    "tier": "premium",
+    "sort": 5,
+    "description": "Sky lanterns drift over a Rajasthani palace, then the story unfolds through painted ceremonies, a vintage car and a palace lit up at night.",
+    "themes": [
+      {
+        "id": "",
+        "name": "Dusk & Damask",
+        "swatch": "#0f5a4d"
+      }
+    ]
+  }
 }
