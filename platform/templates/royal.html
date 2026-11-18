@@ -9,6 +9,7 @@
 <meta property="og:description" content="Tap the palace doors to open your invitation">
 {{#ogImage}}<meta property="og:image" content="{{ogImage}}">{{/ogImage}}
 <meta name="theme-color" content="#e58a24">
+<link rel="preload" as="image" href="/designs/royal/g-wall.webp"><link rel="preload" as="image" href="/designs/royal/g-door-l.webp"><link rel="preload" as="image" href="/designs/royal/g-door-r.webp"><link rel="preload" as="image" href="/designs/royal/night.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@500;600&family=Tiro+Devanagari+Hindi&display=swap">
@@ -30,32 +31,33 @@ button{font:inherit;cursor:pointer}
 @keyframes shine{to{background-position:-220% 0}}
 
 /* ============ 3D GATE ============ */
-#gate{position:fixed;inset:0;z-index:100;background:#b8621a;overflow:hidden;perspective:1100px;perspective-origin:50% 52%}
+#gate{position:fixed;inset:0;z-index:100;background:#2a170c;overflow:hidden;perspective:1100px;perspective-origin:50% 52%}
+.gatebg{position:absolute;inset:-40px;background:url(/designs/royal/g-wall.webp) 50% 50%/cover;filter:blur(14px) brightness(.55)}
 #world{position:absolute;left:50%;top:50%;width:400px;height:800px;margin:-400px 0 0 -200px;transform-style:preserve-3d;transform-origin:50% 54%;will-change:transform}
 #world.push{transition:transform 1.9s cubic-bezier(.55,0,.75,.4)}
 #tiltbox{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateY(calc(var(--tx)*5deg)) rotateX(calc(var(--ty)*-4deg));transition:transform .25s ease-out}
-.glowroom{position:absolute;left:100px;top:190px;width:200px;height:460px;transform:translateZ(-90px);background:radial-gradient(60% 50% at 50% 60%,#fffbe6,#ffe9a8 45%,#f4b950 80%,#d9892a);box-shadow:0 0 60px #ffdf9a}
-.rays{position:absolute;left:60px;top:150px;width:280px;height:520px;transform:translateZ(-40px);opacity:0;transition:opacity 1.2s ease .4s;background:conic-gradient(from 180deg at 50% 62%,transparent 0 150deg,rgba(255,240,190,.55) 160deg,transparent 170deg 175deg,rgba(255,240,190,.5) 182deg,transparent 190deg 197deg,rgba(255,240,190,.55) 203deg,transparent 212deg);filter:blur(6px);mix-blend-mode:screen}
+.glowroom{position:absolute;left:40px;top:250px;width:320px;height:420px;transform:translateZ(-90px);background:radial-gradient(60% 50% at 50% 60%,#fffbe6,#ffe9a8 45%,#f4b950 80%,#d9892a);box-shadow:0 0 60px #ffdf9a}
+.rays{position:absolute;left:30px;top:220px;width:340px;height:470px;transform:translateZ(-40px);opacity:0;transition:opacity 1.2s ease .4s;background:conic-gradient(from 180deg at 50% 62%,transparent 0 150deg,rgba(255,240,190,.55) 160deg,transparent 170deg 175deg,rgba(255,240,190,.5) 182deg,transparent 190deg 197deg,rgba(255,240,190,.55) 203deg,transparent 212deg);filter:blur(6px);mix-blend-mode:screen}
 #gate.open .rays{opacity:1}
-.doorbox{position:absolute;left:110px;top:195px;width:180px;height:445px;perspective:620px;perspective-origin:50% 55%;transform-style:preserve-3d}
-.door{position:absolute;top:0;width:90px;height:445px;transform-style:preserve-3d;transition:transform 2.1s cubic-bezier(.6,.02,.2,1),filter 2.1s ease}
-.door svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.doorbox{position:absolute;left:77.4px;top:302.9px;width:245.1px;height:320.1px;perspective:620px;perspective-origin:50% 55%;transform-style:flat;overflow:visible}
+.door{position:absolute;top:0;width:50%;height:100%;transform-style:preserve-3d;will-change:transform;transition:transform 2.1s cubic-bezier(.6,.02,.2,1),filter 2.1s ease}
+.door img{position:absolute;inset:0;width:100%;height:100%;display:block}
 .door.l{left:0;transform-origin:0 50%}
 .door.r{right:0;transform-origin:100% 50%}
-.door .edge{position:absolute;top:0;width:9px;height:100%;background:linear-gradient(90deg,#0d2c63,#1a4c9a)}
+.door .edge{position:absolute;top:12%;width:12px;height:88%;background:linear-gradient(90deg,#0c1a3e,#24386e)}
 .door.l .edge{right:0;transform-origin:100% 50%;transform:rotateY(-90deg)}
 .door.r .edge{left:0;transform-origin:0 50%;transform:rotateY(90deg)}
 #gate.open .door.l{transform:rotateY(74deg);filter:brightness(.72)}
 #gate.open .door.r{transform:rotateY(-74deg);filter:brightness(.72)}
-.wall{position:absolute;inset:0;width:100%;height:100%;transform:translateZ(1px);pointer-events:none}
+.wall{position:absolute;left:0;top:0;width:400px;height:800px;object-fit:cover;object-position:50.36% 50%;transform:translateZ(1px);pointer-events:none}
 .lantern{position:absolute;top:0;width:34px;transform-origin:50% 0;transform:translateZ(46px);animation:sway 4s ease-in-out infinite}
 .lantern.b{animation-delay:-2s}
 @keyframes sway{0%,100%{transform:translateZ(46px) rotate(3deg)}50%{transform:translateZ(46px) rotate(-3deg)}}
-.gate-title{position:absolute;left:0;right:0;top:38px;text-align:center;transform:translateZ(30px);color:#fff7df;text-shadow:0 2px 8px rgba(90,40,0,.6)}
+.gate-title{position:absolute;left:0;right:0;top:44px;text-align:center;transform:translateZ(30px);color:#fff7df;text-shadow:0 2px 8px rgba(90,40,0,.6)}
 .gate-title .k{font-family:var(--caps);font-size:9px;letter-spacing:.34em}
 .gate-title .n{font-family:var(--script);font-size:40px;line-height:1.1}
 .gate-title .g{font-family:var(--serif);font-style:italic;font-size:14px;opacity:.95}
-#enter{position:absolute;left:50%;top:470px;width:150px;margin-left:-75px;transform:translateZ(60px);background:none;border:0;padding:0;color:#fff7df;text-align:center;transition:opacity .4s}
+#enter{position:absolute;left:50%;top:430px;width:150px;margin-left:-75px;transform:translateZ(60px);background:none;border:0;padding:0;color:#fff7df;text-align:center;transition:opacity .4s}
 #enter .ring{width:66px;height:66px;margin:0 auto;border-radius:50%;border:1.5px solid rgba(255,236,170,.9);display:grid;place-items:center;background:rgba(18,58,126,.55);box-shadow:0 0 0 0 rgba(255,236,170,.6);animation:pulse 1.9s ease-out infinite}
 @keyframes pulse{to{box-shadow:0 0 0 22px rgba(255,236,170,0)}}
 #enter .ring svg{width:26px;height:26px}
@@ -66,13 +68,16 @@ button{font:inherit;cursor:pointer}
 #gate.out{transition:opacity 1s ease;opacity:0;pointer-events:none}
 
 /* ============ NIGHT HERO ============ */
-.night{position:relative;height:100svh;min-height:640px;max-height:900px;overflow:hidden;background:#0b1440;color:#fff;text-align:center}
+.night{position:relative;height:100svh;min-height:640px;max-height:900px;overflow:hidden;background:linear-gradient(#070d24,#0f1a3c 60%);color:#fff;text-align:center}
 .night .layer{position:absolute;left:-6%;width:112%;bottom:0;will-change:transform}
 #stars{position:absolute;inset:0;width:100%;height:100%}
-.moon{position:absolute;right:7%;top:4.5%;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 36% 34%,#fffef4,#fdf0c0 60%,#e9d28e);box-shadow:0 0 40px 14px rgba(255,236,170,.35),0 0 120px 50px rgba(255,236,170,.16)}
+.nightwrap{position:absolute;left:0;right:0;bottom:0;will-change:transform}
+.nightimg{display:block;width:215%;max-width:none;animation:pan 26s ease-in-out infinite alternate;-webkit-mask-image:linear-gradient(transparent,#000 18%);mask-image:linear-gradient(transparent,#000 18%)}
+@keyframes pan{from{transform:translateX(-4%)}to{transform:translateX(-50%)}}
+.moon{position:absolute;right:7%;top:4.5%;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 60% 66%,rgba(180,150,80,.35) 0 9%,transparent 10%),radial-gradient(circle at 34% 58%,rgba(180,150,80,.3) 0 6%,transparent 7%),radial-gradient(circle at 34% 30%,#fffef4,#fdf0c0 55%,#c9a860);box-shadow:0 0 40px 14px rgba(255,236,170,.35),0 0 120px 50px rgba(255,236,170,.16)}
 .skyl{position:absolute;bottom:-40px;width:18px;height:24px;border-radius:5px 5px 7px 7px;background:linear-gradient(#ffd98a,#f08a2a);box-shadow:0 0 14px 4px rgba(255,180,80,.6);opacity:0;animation:rise linear infinite}
 @keyframes rise{0%{transform:translate(0,0) scale(1);opacity:0}8%{opacity:.95}100%{transform:translate(var(--dx),-115vh) scale(.5);opacity:0}}
-.hero-copy{position:absolute;left:0;right:0;top:15%;padding:0 24px;transform:translate3d(calc(var(--tx)*-8px),calc(var(--ty)*-6px),0)}
+.hero-copy{position:absolute;left:0;right:0;top:10.5%;text-shadow:0 2px 14px rgba(5,10,30,.85);padding:0 24px;transform:translate3d(calc(var(--tx)*-8px),calc(var(--ty)*-6px),0)}
 .hero-copy .hin{font-family:var(--hindi);font-size:15px;color:var(--gold-hi);letter-spacing:.04em}
 .hero-copy .k{font-family:var(--caps);font-size:10px;letter-spacing:.34em;color:#cfd8ff;margin-top:20px}
 .hero-copy h1{font-family:var(--script);font-weight:400;font-size:74px;line-height:1.02;margin:10px 0 0}
@@ -105,8 +110,8 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 .glare{position:absolute;inset:0;pointer-events:none;border-radius:inherit;mix-blend-mode:soft-light;background:linear-gradient(calc(115deg + var(--tx)*40deg),transparent 30%,rgba(255,255,255,.75) calc(50% + var(--tx)*25%),transparent 70%)}
 
 /* framed cards */
-.frame{position:relative;width:100%;max-width:330px;aspect-ratio:300/440;margin:0 auto;transform-style:preserve-3d;filter:drop-shadow(0 26px 30px rgba(90,40,20,.28))}
-.frame>svg.f{position:absolute;inset:0;width:100%;height:100%}
+.frame{position:relative;width:100%;max-width:330px;aspect-ratio:300/440;margin:0 auto;transform-style:preserve-3d;filter:drop-shadow(0 34px 34px rgba(70,30,10,.38)) drop-shadow(0 6px 6px rgba(70,30,10,.22))}
+.frame>.f{position:absolute;left:-6.667%;top:-6.818%;width:113.333%;height:113.636%;max-width:none}
 .frame .in{position:absolute;left:15%;right:15%;top:27%;bottom:9%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transform:translateZ(26px)}
 .frame.dark .in{color:#fbeecb}
 .feather{position:absolute;width:74px;transform:translateZ(60px) rotate(var(--r,-18deg));transform-origin:50% 100%;filter:drop-shadow(0 8px 8px rgba(0,0,0,.25));animation:fsway 5s ease-in-out infinite}
@@ -122,7 +127,7 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 
 /* countdown */
 .count{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:340px;margin:30px auto 0;perspective:700px}
-.count div{background:linear-gradient(#8a1a2e,#5c0f1e);border-radius:10px;padding:14px 0 10px;box-shadow:0 10px 20px rgba(90,20,30,.3),inset 0 1px 0 rgba(255,220,160,.4);border:1px solid var(--gold);position:relative;transform-style:preserve-3d}
+.count div{background:linear-gradient(#8a1a2e,#5c0f1e);border-radius:10px;padding:14px 0 10px;box-shadow:0 5px 0 #3a0810,0 6px 0 #c9a14a,0 18px 24px rgba(90,20,30,.4),inset 0 1px 0 rgba(255,220,160,.55),inset 0 -10px 16px rgba(0,0,0,.25);border:1px solid var(--gold);position:relative;transform-style:preserve-3d}
 .count div::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.35)}
 .count b{display:block;font-family:var(--display);font-weight:600;font-size:30px;color:var(--gold-hi);font-variant-numeric:tabular-nums;line-height:1}
 .count b.tick{animation:flipn .5s ease}
@@ -140,17 +145,17 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 /* couple */
 .couple{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
 .portrait{position:relative;aspect-ratio:4/5.4;transform-style:preserve-3d}
-.portrait .ph{position:absolute;left:14%;right:14%;top:11%;bottom:13%;border-radius:50%/46%;background:#ddd 50% 20%/cover no-repeat;transform:translateZ(-1px);box-shadow:inset 0 0 20px rgba(0,0,0,.4)}
-.portrait svg{position:absolute;inset:0;width:100%;height:100%;transform:translateZ(18px)}
+.portrait .ph{position:absolute;left:14%;right:14%;top:11%;bottom:13%;border-radius:50%/46%;background-image:url(couple.jpg);background-repeat:no-repeat;background-size:300% auto;transform:translateZ(-1px);box-shadow:inset 0 0 20px rgba(0,0,0,.4)}
+.portrait img{position:absolute;left:-6%;top:-4.444%;width:112%;height:108.889%;max-width:none;transform:translateZ(18px)}
 .pname{font-family:var(--display);font-weight:600;font-size:22px;color:var(--maroon);margin:8px 0 0}
 .psub{font-size:14px;font-style:italic;color:var(--muted);line-height:1.35;margin:2px 0 0}
 .together{margin:38px auto 0;width:100%;max-width:330px;aspect-ratio:4/5;position:relative;transform-style:preserve-3d}
-.together .ph{position:absolute;inset:7%;border-radius:150px 150px 8px 8px;background:#ddd 50% 22%/cover;transform:translateZ(-1px)}
-.together svg{position:absolute;inset:0;width:100%;height:100%;transform:translateZ(22px)}
+.together .ph{position:absolute;inset:7%;border-radius:150px 150px 8px 8px;background:url(couple.jpg) 50% 22%/cover;transform:translateZ(-1px)}
+.together img{position:absolute;left:-3.75%;top:-6%;width:107.5%;height:110%;max-width:none;transform:translateZ(22px)}
 
 /* family */
 .fam{display:grid;gap:18px;margin-top:34px}
-.famcard{position:relative;border-radius:14px;padding:26px 20px;background:linear-gradient(160deg,#fffdf6,#f4e8cf);border:1px solid var(--gold);box-shadow:0 18px 30px rgba(90,40,20,.16),inset 0 0 0 5px #fffaf0,inset 0 0 0 6px rgba(201,161,74,.6);transform-style:preserve-3d}
+.famcard{position:relative;border-radius:14px;padding:26px 20px;background:linear-gradient(160deg,#fffdf6,#f4e8cf);border:1px solid var(--gold);box-shadow:0 4px 0 #b8892f,0 5px 0 #7a5a1c,0 28px 36px rgba(90,40,20,.26),inset 0 0 0 5px #fffaf0,inset 0 0 0 6px rgba(201,161,74,.6),inset 0 2px 0 6px rgba(255,255,255,.5);transform-style:preserve-3d}
 .famcard h3{font-family:var(--display);font-weight:600;font-size:22px;color:var(--maroon);margin:0}
 .famcard .k{font-family:var(--caps);font-size:9.5px;letter-spacing:.26em;color:var(--gold-lo)}
 .famcard p{margin:8px 0 0;font-size:17px;line-height:1.45;color:var(--ink)}
@@ -183,6 +188,50 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 .names h4{margin:0 0 4px;font-family:var(--caps);font-weight:500;font-size:10px;letter-spacing:.24em;color:var(--gold-hi)}
 .names p{margin:0;color:#d5dcff;font-size:16.5px;line-height:1.5;overflow-wrap:anywhere}
 
+/* image cards */
+.ganesha{width:150px;height:150px;margin:0 auto -6px;border-radius:50%;position:relative;z-index:2;box-shadow:0 0 0 4px #e6c46a,0 0 0 7px #7a1426,0 0 0 9px #c9a14a,0 18px 34px rgba(90,40,10,.45),0 0 60px rgba(255,200,90,.55)}
+.ganesha img{width:100%;height:100%;border-radius:50%;display:block;animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-5px) scale(1.02)}}
+.plaque{position:relative;margin:0 -22px;aspect-ratio:1300/768;transform-style:preserve-3d;filter:drop-shadow(0 26px 26px rgba(60,20,10,.35))}
+.plaque>img,.swing>img,.mandap>img,.pcard>img,.gwcard>img,.curtain>img{position:absolute;inset:0;width:100%;height:100%;display:block;border-radius:inherit}
+.plaque .pin{position:absolute;left:22%;right:22%;top:20%;bottom:22%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fbeecb;transform:translateZ(34px)}
+.plaque .hin{font-size:9.5px;white-space:nowrap}
+.plaque .nm{font-size:clamp(28px,8.6vw,40px);line-height:.98}
+.plaque .amp{font-size:17px;line-height:.9}
+.plaque .dt{font-size:8px;letter-spacing:.08em;margin-top:5px;white-space:nowrap}
+.invtext{max-width:340px;margin:30px auto 0;padding:26px 20px;border-radius:14px;background:linear-gradient(160deg,#fffdf6,#f4e8cf);border:1px solid var(--gold);box-shadow:0 4px 0 #b8892f,0 24px 32px rgba(90,40,20,.2),inset 0 0 0 5px #fffaf0,inset 0 0 0 6px rgba(201,161,74,.6)}
+.invtext p{margin:0;font-style:italic;font-size:16.5px;line-height:1.45;color:var(--ink)}
+.invtext .sh{font-family:var(--hindi);font-style:normal;font-size:14px;color:var(--gold-lo);margin-bottom:14px}
+.invtext .nm2{font-family:var(--script);font-size:46px;line-height:1.1;color:var(--maroon);margin-top:8px}
+.invtext .par{font-size:14.5px;color:var(--muted)}
+.invtext .amp2{font-family:var(--script);font-size:26px;color:var(--gold-lo);margin-top:6px}
+.swing{position:relative;margin:26px -22px 0;aspect-ratio:1100/861;transform-style:preserve-3d;filter:drop-shadow(0 22px 24px rgba(40,20,10,.35))}
+.swing-in{position:absolute;left:26.5%;right:26.5%;top:36%;bottom:29%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transform:translateZ(30px)}
+.swing .sl{font-family:var(--script);font-size:clamp(14px,4.1vw,20px);white-space:nowrap;color:var(--gold-hi);line-height:1;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.swing .count{gap:4px;margin:0;width:100%;max-width:none}
+.swing .count div{padding:7px 0 5px;border-radius:7px}
+.swing .count b{font-size:clamp(17px,5.2vw,26px)}
+.swing .count span{font-size:6.5px;letter-spacing:.12em}
+.mandap{position:relative;margin:30px -22px 0;aspect-ratio:1300/896;transform-style:preserve-3d;filter:drop-shadow(0 22px 24px rgba(60,30,10,.3))}
+.mph{position:absolute;left:31%;width:38%;top:31%;height:63%;background:#3a2a20 50% 22%/cover no-repeat;border:3px solid #e9c46a;border-radius:46% 46% 8px 8px/30% 30% 8px 8px;box-shadow:0 20px 30px rgba(40,10,0,.5),0 0 0 5px rgba(122,20,38,.85),0 0 0 7px #e9c46a;transform:translateZ(46px)}
+.mph.two{width:27%;height:52%;top:38%}.mph.two.l{left:21%}.mph.two.r{left:52%}
+.couple{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pcard{position:relative;width:100%;max-width:340px;margin:0 auto;aspect-ratio:900/1147;border-radius:20px;transform-style:preserve-3d;box-shadow:0 30px 40px rgba(60,25,10,.35),0 0 0 1px rgba(201,161,74,.6)}
+.pcard .in{position:absolute;left:23%;right:23%;top:25%;bottom:21%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transform:translateZ(30px)}
+.pcard .ev h3{font-size:clamp(21px,6.4vw,27px)}
+.pcard .ev p{font-size:14px}
+.gwcard{position:relative;width:100%;max-width:360px;margin:0 auto;aspect-ratio:950/1040;border-radius:18px;transform-style:preserve-3d;box-shadow:0 30px 40px rgba(20,20,60,.35)}
+.gwcard .in{position:absolute;left:21%;right:21%;top:31%;bottom:9%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transform:translateZ(30px)}
+.curtain{position:relative;margin:24px -22px 0;aspect-ratio:950/1250;transform-style:preserve-3d;filter:drop-shadow(0 26px 30px rgba(60,20,10,.3))}
+.curtain>img{object-fit:fill}
+.curtain form{position:absolute;left:26%;right:26%;top:17%;bottom:9%;margin:0;gap:7px;align-content:center;transform:translateZ(26px)}
+.curtain label{font-size:8px;gap:3px}
+.curtain input,.curtain select,.curtain textarea{font-size:15px;padding:8px 10px;border-radius:8px;background:rgba(255,253,247,.92)}
+.curtain textarea{min-height:70px}
+.curtain .btn{padding:11px 10px;font-size:9.5px;letter-spacing:.12em}
+.closeimg{position:relative;margin:-84px -22px 0;height:min(78vh,560px);overflow:hidden}
+.closeimg img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;transform:scale(calc(1.18 - var(--p)*.18));transform-origin:50% 60%}
+.closeimg::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,#0b1440)}
 #dust{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
 @media (prefers-reduced-motion:reduce){[data-3d]{--p:1!important}.goldtext,.lantern,.feather,.skyl{animation:none}}
 </style>
@@ -191,80 +240,15 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 
 <!-- ================== 3D PALACE GATE ================== -->
 <div id="gate" aria-label="Palace doors">
+  <div class="gatebg"></div>
   <div id="world"><div id="tiltbox">
     <div class="glowroom"></div>
     <div class="rays"></div>
     <div class="doorbox">
-      <div class="door l"><svg viewBox="0 0 90 445" preserveAspectRatio="none"><use href="#doorface"/></svg><div class="edge"></div></div>
-      <div class="door r"><svg viewBox="0 0 90 445" preserveAspectRatio="none" style="transform:scaleX(-1)"><use href="#doorface"/></svg><div class="edge"></div></div>
+      <div class="door l"><img src="/designs/royal/g-door-l.webp" alt=""><div class="edge"></div></div>
+      <div class="door r"><img src="/designs/royal/g-door-r.webp" alt=""><div class="edge"></div></div>
     </div>
-    <svg class="wall" viewBox="0 0 400 800">
-      <defs>
-        <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3a640"/><stop offset=".6" stop-color="#e58a24"/><stop offset="1" stop-color="#c96f17"/></linearGradient>
-        <linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0b8"/><stop offset=".5" stop-color="#d4a640"/><stop offset="1" stop-color="#8d6a26"/></linearGradient>
-        <linearGradient id="db" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a6fd6"/><stop offset=".5" stop-color="#1f5fbf"/><stop offset="1" stop-color="#174a9c"/></linearGradient>
-        <radialGradient id="stud" cx=".35" cy=".3"><stop offset="0" stop-color="#fff3c2"/><stop offset=".6" stop-color="#d4a640"/><stop offset="1" stop-color="#7a5a1c"/></radialGradient>
-        <pattern id="tileA" width="40" height="40" patternUnits="userSpaceOnUse">
-          <rect width="40" height="40" fill="#f7f4ea"/>
-          <path d="M20 3 L25 15 L37 20 L25 25 L20 37 L15 25 L3 20 L15 15Z" fill="#1f5fbf"/>
-          <path d="M20 10 L23 17 L30 20 L23 23 L20 30 L17 23 L10 20 L17 17Z" fill="#f7f4ea"/>
-          <circle cx="20" cy="20" r="3.4" fill="#e58a24"/>
-          <path d="M0 0 L7 0 L0 7Z M40 0 L33 0 L40 7Z M0 40 L7 40 L0 33Z M40 40 L33 40 L40 33Z" fill="#0f7a78"/>
-          <rect width="40" height="40" fill="none" stroke="#b9cfe8" stroke-width=".6"/>
-        </pattern>
-        <pattern id="tileB" width="24" height="24" patternUnits="userSpaceOnUse">
-          <rect width="24" height="24" fill="#174a9c"/>
-          <path d="M12 2 L22 12 L12 22 L2 12Z" fill="#f7f4ea"/><path d="M12 7 L17 12 L12 17 L7 12Z" fill="#e58a24"/>
-        </pattern>
-        <pattern id="tileC" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#0f7a78"/><circle cx="8" cy="8" r="4.5" fill="#f7f4ea"/><circle cx="8" cy="8" r="2" fill="#1f5fbf"/></pattern>
-        <symbol id="doorface" viewBox="0 0 90 445">
-          <rect width="90" height="445" fill="url(#db)"/>
-          <rect x="3" y="3" width="84" height="439" fill="none" stroke="#0d2c63" stroke-width="2"/>
-          <g fill="#184c9f" stroke="#6ea4ee" stroke-width="1">
-            <path d="M12 150 V80 Q45 30 78 80 V150Z"/><rect x="12" y="162" width="66" height="78" rx="3"/><rect x="12" y="252" width="66" height="78" rx="3"/><rect x="12" y="342" width="66" height="88" rx="3"/>
-          </g>
-          <g fill="none" stroke="#f6e3a6" stroke-width="1.1" opacity=".9">
-            <path d="M45 190 l10 11 -10 11 -10 -11z M45 280 l10 11 -10 11 -10 -11z M45 372 l12 14 -12 14 -12 -14z"/>
-            <path d="M22 142 V86 Q45 50 68 86 V142Z"/><circle cx="45" cy="112" r="10"/>
-          </g>
-          <g fill="url(#stud)">
-            <circle cx="12" cy="156" r="3"/><circle cx="34" cy="156" r="3"/><circle cx="56" cy="156" r="3"/><circle cx="78" cy="156" r="3"/>
-            <circle cx="12" cy="246" r="3"/><circle cx="34" cy="246" r="3"/><circle cx="56" cy="246" r="3"/><circle cx="78" cy="246" r="3"/>
-            <circle cx="12" cy="336" r="3"/><circle cx="34" cy="336" r="3"/><circle cx="56" cy="336" r="3"/><circle cx="78" cy="336" r="3"/>
-            <circle cx="12" cy="436" r="3"/><circle cx="34" cy="436" r="3"/><circle cx="56" cy="436" r="3"/><circle cx="78" cy="436" r="3"/>
-            <circle cx="45" cy="112" r="4"/>
-          </g>
-          <g><circle cx="76" cy="262" r="6" fill="url(#stud)"/><circle cx="76" cy="276" r="9" fill="none" stroke="url(#gd)" stroke-width="3"/></g>
-          <rect x="86" y="0" width="4" height="445" fill="#0d2c63" opacity=".6"/>
-        </symbol>
-        <path id="archp" d="M110 640 V330 Q110 300 128 292 Q124 262 150 256 Q152 228 180 230 Q188 210 200 200 Q212 210 220 230 Q248 228 250 256 Q276 262 272 292 Q290 300 290 330 V640 Z"/>
-      </defs>
-      <!-- wall with arch hole -->
-      <path fill="url(#wg)" fill-rule="evenodd" d="M0 0H400V800H0Z M110 640 V330 Q110 300 128 292 Q124 262 150 256 Q152 228 180 230 Q188 210 200 200 Q212 210 220 230 Q248 228 250 256 Q276 262 272 292 Q290 300 290 330 V640 Z"/>
-      <!-- tile surround -->
-      <path fill="url(#tileA)" fill-rule="evenodd" d="M56 150H344V646H56Z M110 640 V330 Q110 300 128 292 Q124 262 150 256 Q152 228 180 230 Q188 210 200 200 Q212 210 220 230 Q248 228 250 256 Q276 262 272 292 Q290 300 290 330 V640 Z"/>
-      <rect x="56" y="150" width="288" height="496" fill="none" stroke="#123a7e" stroke-width="5"/>
-      <rect x="64" y="158" width="272" height="480" fill="none" stroke="url(#gd)" stroke-width="2"/>
-      <!-- arch band -->
-      <use href="#archp" fill="none" stroke="url(#tileC)" stroke-width="22"/>
-      <use href="#archp" fill="none" stroke="#123a7e" stroke-width="26" opacity=".0"/>
-      <use href="#archp" fill="none" stroke="url(#gd)" stroke-width="4"/>
-      <path fill="none" stroke="url(#gd)" stroke-width="2.5" d="M97 646 V328 Q97 292 116 282 Q114 252 140 244 Q146 216 174 217 Q184 198 200 184 Q216 198 226 217 Q254 216 260 244 Q286 252 284 282 Q303 292 303 328 V646"/>
-      <!-- finial -->
-      <g fill="url(#gd)"><circle cx="200" cy="172" r="7"/><path d="M200 150 l5 14 h-10z"/><circle cx="200" cy="147" r="3"/></g>
-      <!-- cornice + frieze -->
-      <rect x="40" y="120" width="320" height="30" fill="url(#tileB)"/><rect x="40" y="116" width="320" height="5" fill="url(#gd)"/><rect x="40" y="149" width="320" height="3" fill="url(#gd)"/>
-      <!-- side pilasters -->
-      <g><rect x="22" y="150" width="30" height="496" fill="#f3d9a6"/><rect x="348" y="150" width="30" height="496" fill="#f3d9a6"/><rect x="26" y="160" width="22" height="476" fill="url(#tileC)" opacity=".9"/><rect x="352" y="160" width="22" height="476" fill="url(#tileC)" opacity=".9"/></g>
-      <!-- dado + floor -->
-      <rect x="0" y="646" width="400" height="62" fill="url(#tileB)"/><rect x="0" y="644" width="400" height="5" fill="url(#gd)"/><rect x="0" y="706" width="400" height="5" fill="#123a7e"/>
-      <path d="M0 711H400V800H0Z" fill="#b5551a"/><path d="M96 711 H304 L330 800 H70Z" fill="#8f1d2c"/><path d="M96 711 H304 L330 800 H70Z" fill="none" stroke="url(#gd)" stroke-width="2"/>
-      <path d="M110 640 H290 V650 H110Z" fill="#7a3a12"/>
-      <!-- shading -->
-      <rect width="400" height="800" fill="url(#vig)" opacity=".0"/>
-    </svg>
-    <svg class="lantern" style="left:60px" viewBox="0 0 34 150"><path d="M17 0V84" stroke="#8d6a26" stroke-width="1.5"/><path d="M9 86h16l5 8H4z" fill="#c9a14a"/><path d="M5 94 Q0 112 7 128 H27 Q34 112 29 94Z" fill="#ffd98a" stroke="#8d6a26" stroke-width="1.5"/><path d="M12 94V128M22 94V128" stroke="#8d6a26"/><path d="M7 128h20l-10 14z" fill="#c9a14a"/><circle cx="17" cy="111" r="16" fill="#fff3c2" opacity=".35"/></svg>
-    <svg class="lantern b" style="left:306px" viewBox="0 0 34 150"><path d="M17 0V84" stroke="#8d6a26" stroke-width="1.5"/><path d="M9 86h16l5 8H4z" fill="#c9a14a"/><path d="M5 94 Q0 112 7 128 H27 Q34 112 29 94Z" fill="#ffd98a" stroke="#8d6a26" stroke-width="1.5"/><path d="M12 94V128M22 94V128" stroke="#8d6a26"/><path d="M7 128h20l-10 14z" fill="#c9a14a"/><circle cx="17" cy="111" r="16" fill="#fff3c2" opacity=".35"/></svg>
+    <img class="wall" src="/designs/royal/g-wall.webp" alt="">
     <div class="gate-title"><div class="k">The Wedding Of</div><div class="n">{{groom.name}} &amp; {{bride.name}}</div><div class="g" id="gateGuest">You are invited</div></div>
     <button id="enter" type="button" aria-label="Open the palace doors">
       <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="#fff3c2" stroke-width="1.6"><path d="M12 3 9 6h2v6H7.5a1.5 1.5 0 0 0 0 3H9l-1.5 3.5L10 21h7l1.5-6-2-3H13V6h2z"/></svg></div>
@@ -281,21 +265,7 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 <!-- ================== NIGHT HERO ================== -->
 <header class="night" id="night">
   <canvas id="stars"></canvas>
-  <div class="moon" data-par="-.12"></div>
-  <svg class="layer" data-par="-.2" viewBox="0 0 448 300" preserveAspectRatio="xMidYMax slice" style="height:60%"><path d="M0 190 Q60 120 130 170 Q200 90 280 160 Q350 110 448 180 V300 H0Z" fill="#16296e"/><path d="M0 220 Q90 170 170 210 Q260 160 340 205 Q400 180 448 215 V300H0Z" fill="#1c3585"/></svg>
-  <svg class="layer" data-par="-.34" viewBox="0 0 448 330" preserveAspectRatio="xMidYMax slice" style="height:58%">
-    <defs><linearGradient id="lk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#27469c"/><stop offset="1" stop-color="#0c1748"/></linearGradient></defs>
-    <rect y="205" width="448" height="125" fill="url(#lk)"/>
-    <g fill="#0a1238">
-      <path d="M40 205 V150 h18 v-22 q14 -22 28 0 v22 h30 v-40 q22 -34 44 0 v40 h30 v-18 q12 -18 24 0 v18 h16 V205Z"/>
-      <path d="M246 205 V160 h14 v-30 q20 -30 40 0 v30 h22 v-52 q26 -40 52 0 v52 h22 v-22 q12 -18 24 0 v22 h12 V205Z"/>
-      <rect x="92" y="100" width="2" height="12"/><rect x="347" y="62" width="2" height="14"/>
-    </g>
-    <g fill="#ffd27a"><rect x="62" y="162" width="6" height="12" rx="3"/><rect x="82" y="162" width="6" height="12" rx="3"/><rect x="128" y="150" width="7" height="16" rx="3.5"/><rect x="146" y="150" width="7" height="16" rx="3.5"/><rect x="196" y="168" width="6" height="12" rx="3"/><rect x="274" y="166" width="7" height="14" rx="3.5"/><rect x="292" y="166" width="7" height="14" rx="3.5"/><rect x="338" y="136" width="8" height="20" rx="4"/><rect x="358" y="136" width="8" height="20" rx="4"/><rect x="398" y="170" width="6" height="12" rx="3"/></g>
-    <g fill="#ffd27a" opacity=".5"><rect x="62" y="214" width="6" height="26"/><rect x="128" y="214" width="7" height="34"/><rect x="146" y="214" width="7" height="30"/><rect x="274" y="214" width="7" height="28"/><rect x="338" y="214" width="8" height="42"/><rect x="358" y="214" width="8" height="36"/></g>
-    <g stroke="#9db4ff" stroke-width="1" opacity=".35"><path d="M20 236h70M150 252h90M300 244h110M60 276h120M240 290h150M10 304h90"/></g>
-    <path d="M0 205 H448" stroke="#ffe7a8" stroke-width="1" opacity=".5"/>
-  </svg>
+  <div class="nightwrap" data-par="-.12"><img class="nightimg" src="/designs/royal/night.webp" alt=""></div>
   <div id="skyl"></div>
   <svg class="layer" data-par="-.05" viewBox="0 0 448 120" preserveAspectRatio="xMidYMin slice" style="top:0;bottom:auto;height:17%"><g id="toran"></g></svg>
   <div class="hero-copy">
@@ -312,23 +282,26 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 <section class="paper pad">
   <div class="kicker">With the blessings of our elders</div>
   <h2 class="h2">The Royal Invitation</h2><div class="orn">✦</div>
-  <div class="stage3d" style="margin-top:34px">
-    <div class="frame dark fx-tilt inv" data-3d>
-      <svg class="f" viewBox="0 0 300 440"><use href="#frameDark"/></svg>
-      <svg class="feather" style="left:-9%;bottom:4%;--r:-22deg" viewBox="0 0 60 190"><use href="#feather"/></svg>
-      <svg class="feather" style="right:-9%;bottom:4%;--r:22deg" viewBox="0 0 60 190"><use href="#feather"/></svg>
-      <div class="in" style="top:24%;left:13%;right:13%">
+  <div class="stage3d" style="margin-top:26px">
+    <div class="ganesha fx-rise" data-3d><img src="/designs/royal/ganesha.webp" alt="Lord Ganesha" loading="lazy"></div>
+    <div class="plaque fx-tilt inv" data-3d>
+      <img src="/designs/royal/plaque.webp" alt="" loading="lazy">
+      <div class="pin">
         <div class="hin">{{blessing}}</div>
-        <p id="respect">{{hostLine}}</p>
-        <div class="nm goldtext">{{groom.name}}</div>
-        <div class="par">{{#groom.parents}}S/o {{groom.parents}}{{/groom.parents}}{{#groom.grandparents}}<br>Grandson of {{groom.grandparents}}{{/groom.grandparents}}</div>
-        <div class="amp">&amp;</div>
-        <div class="nm goldtext">{{bride.name}}</div>
-        <div class="par">{{#bride.parents}}D/o {{bride.parents}}{{/bride.parents}}{{#bride.grandparents}}<br>Grand D/o {{bride.grandparents}}{{/bride.grandparents}}</div>
+        <div class="nm goldtext">{{groom.name}}</div><div class="amp">weds</div><div class="nm goldtext">{{bride.name}}</div>
         <div class="dt">{{dateLong}}</div>
       </div>
-      <div class="glare" style="border-radius:40% 40% 4% 4%/26% 26% 2% 2%"></div>
+      <div class="glare"></div>
     </div>
+  </div>
+  <div class="invtext fx-rise" data-3d>
+    <p class="sh">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ।<br>निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥</p>
+    <p id="respect">{{hostLine}}</p>
+    <div class="nm2">{{groom.name}}</div>
+    <p class="par">{{#groom.parents}}S/o {{groom.parents}}{{/groom.parents}}{{#groom.grandparents}}<br>Grandson of {{groom.grandparents}}{{/groom.grandparents}}</p>
+    <div class="amp2">with</div>
+    <div class="nm2">{{bride.name}}</div>
+    <p class="par">{{#bride.parents}}D/o {{bride.parents}}{{/bride.parents}}{{#bride.grandparents}}<br>Grand D/o {{bride.grandparents}}{{/bride.grandparents}}</p>
   </div>
 </section>
 
@@ -336,24 +309,27 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 <section class="pad" style="background:var(--ivory-2)">
   <div class="kicker">Counting the moments</div>
   <h2 class="h2">Until We Say “I Do”</h2><div class="orn">✦</div>
-  <div class="count" id="count">
+  <div class="stage3d"><div class="swing fx-tilt" data-3d><img src="/designs/royal/swing.webp" alt="" loading="lazy">
+    <div class="swing-in"><div class="sl">Our Wedding Countdown</div><div class="count" id="count">
     <div><b id="cd-d">–</b><span>Days</span></div><div><b id="cd-h">–</b><span>Hours</span></div><div><b id="cd-m">–</b><span>Mins</span></div><div><b id="cd-s">–</b><span>Secs</span></div>
-  </div>
+  </div></div></div></div>
   <div class="stage3d"><div class="scratch fx-rise" data-3d id="scratch">
     <div class="under"><div class="w">{{weekday}}</div><div class="d">{{dayNum}}</div><div class="m">{{month}} {{year}}</div></div>
     <canvas id="scr" width="680" height="424" aria-label="Scratch to reveal the date"></canvas>
   </div></div>
   <p class="after" id="after">Scratch the gold card to reveal the date</p>
 </section>
+{{/hasDate}}
 
-{{/hasDate}}{{#hasAnyPhoto}}<section class="paper pad">
+{{#hasAnyPhoto}}<!-- ROYAL COUPLE -->
+<section class="paper pad">
   <div class="kicker">With the blessings of our elders</div>
   <h2 class="h2">The Royal Couple</h2><div class="orn">✦</div>
-  {{#hasPortraits}}<div class="couple stage3d">
-    <div class="fx-left" data-3d><div class="portrait"><div class="ph" style="background-image:url('{{groom.photo}}')"></div><svg viewBox="0 0 200 270"><use href="#ovalFrame"/></svg></div><div class="pname">{{groom.name}}</div>{{#groom.parents}}<p class="psub">S/o {{groom.parents}}</p>{{/groom.parents}}</div>
-    <div class="fx-right" data-3d><div class="portrait"><div class="ph" style="background-image:url('{{bride.photo}}')"></div><svg viewBox="0 0 200 270"><use href="#ovalFrame"/></svg></div><div class="pname">{{bride.name}}</div>{{#bride.parents}}<p class="psub">D/o {{bride.parents}}</p>{{/bride.parents}}</div>
-  </div>{{/hasPortraits}}
-  {{#hasCouplePhoto}}<div class="stage3d"><div class="together fx-tilt" data-3d><div class="ph" style="background-image:url('{{couplePhoto}}')"></div><svg viewBox="0 0 320 400"><use href="#archFrame"/></svg></div></div>{{/hasCouplePhoto}}
+  <div class="stage3d"><div class="mandap fx-tilt" data-3d><img src="/designs/royal/mandap.webp" alt="" loading="lazy">{{#hasCouplePhoto}}<div class="mph" style="background-image:url('{{couplePhoto}}')"></div>{{/hasCouplePhoto}}{{^hasCouplePhoto}}<div class="mph two l" style="background-image:url('{{groom.photo}}')"></div><div class="mph two r" style="background-image:url('{{bride.photo}}')"></div>{{/hasCouplePhoto}}<div class="glare"></div></div></div>
+  <div class="couple">
+    <div><div class="pname">{{groom.name}}</div>{{#groom.parents}}<p class="psub">S/o {{groom.parents}}</p>{{/groom.parents}}</div>
+    <div><div class="pname">{{bride.name}}</div>{{#bride.parents}}<p class="psub">D/o {{bride.parents}}</p>{{/bride.parents}}</div>
+  </div>
 </section>{{/hasAnyPhoto}}
 
 {{#hasEvents}}<!-- FESTIVITIES -->
@@ -367,8 +343,8 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 <section class="pad" style="background:var(--ivory-2)">
   <div class="kicker">Where it all happens</div>
   <h2 class="h2">The Venue</h2><div class="orn">✦</div>
-  <div class="stage3d" style="margin-top:34px"><div class="frame fx-flip" data-3d>
-    <svg class="f" viewBox="0 0 300 440"><use href="#frameLight" style="--c:#b8892f"/></svg>
+  <div class="stage3d" style="margin-top:30px"><div class="gwcard fx-flip" data-3d>
+    <img src="/designs/royal/gateway.webp" alt="" loading="lazy">
     <div class="in ev" style="--c:var(--maroon)">
       <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 44V22h36v22M14 22q10-18 20 0M24 6v6M10 44V32q4-5 8 0v12M30 44V32q4-5 8 0v12M20 44V30q4-6 8 0v14"/></svg>
       <h3>{{venueName}}</h3>
@@ -376,7 +352,7 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
       {{#note}}<p>{{note}}</p>{{/note}}
       {{#mapUrl}}<a class="btn gold" style="margin-top:10px;padding:12px 18px" target="_blank" rel="noopener" href="{{mapUrl}}">Get Directions</a>{{/mapUrl}}
     </div>
-    <div class="glare" style="border-radius:40% 40% 4% 4%/26% 26% 2% 2%"></div>
+    <div class="glare"></div>
   </div></div>
   <div class="row2" style="max-width:330px;margin-left:auto;margin-right:auto">
     {{#calUrl}}<a class="btn" target="_blank" rel="noopener" href="{{calUrl}}">Save Date</a>{{/calUrl}}
@@ -390,36 +366,138 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
   <div class="kicker">Kindly</div>
   <h2 class="h2">Send Your Blessings</h2><div class="orn">✦</div>
   <p class="lead">Leave your wishes &amp; love for {{groom.name}} &amp; {{bride.name}}</p>
-  <div class="stage3d"><form id="wishForm" class="fx-rise" data-3d>
+  <div class="stage3d"><div class="curtain fx-rise" data-3d><img src="/designs/royal/curtain.webp" alt="" loading="lazy"><form id="wishForm">
     <label for="w-name">Your name<input id="w-name" type="text" autocomplete="name" placeholder="Your name" required></label>
     <label for="w-att">Will you join us?<select id="w-att"><option>Joyfully accept</option><option>Regretfully decline</option></select></label>
     <label for="w-msg">Your wish<textarea id="w-msg" placeholder="Write your heartfelt wish for the couple…"></textarea></label>
     <button class="btn" type="submit" id="w-send">Send →</button>
     <p id="w-ok" hidden style="text-align:center;margin:0">Thank you! Your reply has been sent. ✨</p>
     <a class="btn green" id="w-open" hidden target="_blank" rel="noopener">Open WhatsApp to send</a>
-  </form></div>
+  </form></div></div>
 </section>{{/showRsvp}}
 
 <!-- ================== CLOSING ================== -->
 <section class="closing pad">
-  <svg viewBox="0 0 448 60" style="position:absolute;left:0;top:0;width:100%;height:60px" preserveAspectRatio="none"><path d="M0 0H448V20 Q420 60 392 20 Q364 60 336 20 Q308 60 280 20 Q252 60 224 20 Q196 60 168 20 Q140 60 112 20 Q84 60 56 20 Q28 60 0 20Z" fill="#f8f2e6"/></svg>
+  <div class="closeimg" data-3d><img src="/designs/royal/closing.webp" alt="" loading="lazy"></div>
   <div style="font-family:var(--hindi);color:var(--gold-hi);font-size:22px;margin-top:30px">आपकी उपस्थिति हमारा सौभाग्य</div>
   <p style="margin:6px 0 0;font-style:italic;color:#d5dcff">Your presence is our blessing</p>
   <div class="sig goldtext">{{groom.name}} &amp; {{bride.name}}</div>
   <div style="font-family:var(--caps);font-size:10px;letter-spacing:.28em;color:#cfd8ff">We await your presence</div>
-  {{#hasFamily}}<div class="fam">{{#family}}<div>{{#title}}<h4>{{title}}</h4>{{/title}}<p>{{names}}</p></div>{{/family}}</div>{{/hasFamily}}
+  {{#hasFamily}}<div class="names">{{#family}}<div>{{#title}}<h4>{{title}}</h4>{{/title}}<p>{{names}}</p></div>{{/family}}</div>{{/hasFamily}}
 </section>
 </div>
 
 <!-- ================== shared SVG art ================== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
+    
+    <filter id="bev" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.3" result="b"/>
+      <feSpecularLighting in="b" surfaceScale="5" specularConstant="1.1" specularExponent="16" lighting-color="#fff4c8" result="sp"><feDistantLight azimuth="225" elevation="48"/></feSpecularLighting>
+      <feComposite in="sp" in2="SourceAlpha" operator="in" result="sp2"/>
+      <feDiffuseLighting in="b" surfaceScale="5" diffuseConstant="1.25" lighting-color="#ffffff" result="df"><feDistantLight azimuth="225" elevation="52"/></feDiffuseLighting>
+      <feComposite in="SourceGraphic" in2="df" operator="arithmetic" k1="1" k2="0" k3="0" k4="0" result="lit"/>
+      <feComposite in="lit" in2="SourceAlpha" operator="in" result="lit2"/>
+      <feComposite in="sp2" in2="lit2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="top"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.2" result="sh"/><feOffset in="sh" dx="2" dy="3.5" result="sh2"/>
+      <feComponentTransfer in="sh2" result="sh3"><feFuncA type="linear" slope=".5"/></feComponentTransfer>
+      <feMerge><feMergeNode in="sh3"/><feMergeNode in="top"/></feMerge>
+    </filter>
+    <filter id="bevBig" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.4" result="b"/>
+      <feSpecularLighting in="b" surfaceScale="7" specularConstant=".9" specularExponent="22" lighting-color="#ffffff" result="sp"><feDistantLight azimuth="225" elevation="46"/></feSpecularLighting>
+      <feComposite in="sp" in2="SourceAlpha" operator="in" result="sp2"/>
+      <feDiffuseLighting in="b" surfaceScale="7" diffuseConstant="1.25" lighting-color="#ffffff" result="df"><feDistantLight azimuth="225" elevation="52"/></feDiffuseLighting>
+      <feComposite in="SourceGraphic" in2="df" operator="arithmetic" k1="1" k2="0" k3="0" k4="0" result="lit"/>
+      <feComposite in="lit" in2="SourceAlpha" operator="in" result="lit2"/>
+      <feComposite in="sp2" in2="lit2" operator="arithmetic" k1="0" k2="1" k3=".8" k4="0" result="top"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="sh"/><feOffset in="sh" dx="3" dy="5" result="sh2"/>
+      <feComponentTransfer in="sh2" result="sh3"><feFuncA type="linear" slope=".55"/></feComponentTransfer>
+      <feMerge><feMergeNode in="sh3"/><feMergeNode in="top"/></feMerge>
+    </filter>
+    <filter id="bevC" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="b"/>
+      <feSpecularLighting in="b" surfaceScale="5" specularConstant=".85" specularExponent="14" lighting-color="#ffffff" result="sp"><feDistantLight azimuth="225" elevation="45"/></feSpecularLighting>
+      <feComposite in="sp" in2="SourceAlpha" operator="in" result="sp2"/>
+      <feSpecularLighting in="b" surfaceScale="5" specularConstant=".7" specularExponent="10" lighting-color="#ffffff" result="dk"><feDistantLight azimuth="45" elevation="40"/></feSpecularLighting>
+      <feColorMatrix in="dk" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0" result="dk1"/>
+      <feComposite in="dk1" in2="SourceAlpha" operator="in" result="dk2"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="sh"/><feOffset in="sh" dx="3" dy="5" result="sh2"/>
+      <feComponentTransfer in="sh2" result="sh3"><feFuncA type="linear" slope=".5"/></feComponentTransfer>
+      <feMerge><feMergeNode in="sh3"/><feMergeNode in="SourceGraphic"/><feMergeNode in="dk2"/><feMergeNode in="sp2"/></feMerge>
+    </filter>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
+    <filter id="soft3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+    <clipPath id="fpclip"><use href="#fp"/></clipPath>
+    <radialGradient id="cardlit" cx=".3" cy=".12" r="1"><stop offset="0" stop-color="#fff" stop-opacity=".34"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></radialGradient>
+
+        <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3a640"/><stop offset=".6" stop-color="#e58a24"/><stop offset="1" stop-color="#c96f17"/></linearGradient>
+        <linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0b8"/><stop offset=".5" stop-color="#d4a640"/><stop offset="1" stop-color="#8d6a26"/></linearGradient>
+        <linearGradient id="db" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2f78e0"/><stop offset=".5" stop-color="#1f5fbf"/><stop offset="1" stop-color="#123f8a"/></linearGradient>
+        <linearGradient id="dsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06163f" stop-opacity=".55"/><stop offset=".22" stop-color="#06163f" stop-opacity="0"/><stop offset=".8" stop-color="#06163f" stop-opacity="0"/><stop offset="1" stop-color="#06163f" stop-opacity=".45"/></linearGradient>
+        <linearGradient id="strap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0b8"/><stop offset=".5" stop-color="#cf9f3a"/><stop offset="1" stop-color="#7a5a1c"/></linearGradient>
+        <linearGradient id="seam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#06163f" stop-opacity="0"/><stop offset="1" stop-color="#06163f" stop-opacity=".8"/></linearGradient>
+        <linearGradient id="dgloss" x1="0" y1="0" x2="1" y2=".5"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".4" stop-color="#fff" stop-opacity="0"/></linearGradient>
+        <linearGradient id="pil" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3a1c04" stop-opacity=".55"/><stop offset=".35" stop-color="#fff" stop-opacity=".28"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#3a1c04" stop-opacity=".6"/></linearGradient>
+        <linearGradient id="und" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1203" stop-opacity=".55"/><stop offset="1" stop-color="#2a1203" stop-opacity="0"/></linearGradient>
+        <linearGradient id="tgloss" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset=".35" stop-color="#fff" stop-opacity="0"/><stop offset=".75" stop-color="#3a1c04" stop-opacity="0"/><stop offset="1" stop-color="#3a1c04" stop-opacity=".3"/></linearGradient>
+        <radialGradient id="vig" cx=".5" cy=".5" r=".75"><stop offset=".55" stop-color="#2a1203" stop-opacity="0"/><stop offset="1" stop-color="#2a1203" stop-opacity=".6"/></radialGradient>
+        <radialGradient id="lglow"><stop offset="0" stop-color="#fff0b0" stop-opacity=".75"/><stop offset="1" stop-color="#fff0b0" stop-opacity="0"/></radialGradient>
+        <linearGradient id="carp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6d1220"/><stop offset="1" stop-color="#a8243a"/></linearGradient>
+        <radialGradient id="lanf" cx=".5" cy=".5" r=".6"><stop offset="0" stop-color="#fffbe0"/><stop offset=".6" stop-color="#ffd27a"/><stop offset="1" stop-color="#d98a2a"/></radialGradient>
+        <clipPath id="archclip"><use href="#archp"/></clipPath>
+        <radialGradient id="stud" cx=".35" cy=".3"><stop offset="0" stop-color="#fff3c2"/><stop offset=".6" stop-color="#d4a640"/><stop offset="1" stop-color="#7a5a1c"/></radialGradient>
+        <pattern id="tileA" width="40" height="40" patternUnits="userSpaceOnUse">
+          <rect width="40" height="40" fill="#f7f4ea"/>
+          <path d="M20 3 L25 15 L37 20 L25 25 L20 37 L15 25 L3 20 L15 15Z" fill="#1f5fbf"/>
+          <path d="M20 10 L23 17 L30 20 L23 23 L20 30 L17 23 L10 20 L17 17Z" fill="#f7f4ea"/>
+          <circle cx="20" cy="20" r="3.4" fill="#e58a24"/>
+          <path d="M0 0 L7 0 L0 7Z M40 0 L33 0 L40 7Z M0 40 L7 40 L0 33Z M40 40 L33 40 L40 33Z" fill="#0f7a78"/>
+          <rect width="40" height="40" fill="none" stroke="#b9cfe8" stroke-width=".6"/>
+        </pattern>
+        <pattern id="tileB" width="24" height="24" patternUnits="userSpaceOnUse">
+          <rect width="24" height="24" fill="#174a9c"/>
+          <path d="M12 2 L22 12 L12 22 L2 12Z" fill="#f7f4ea"/><path d="M12 7 L17 12 L12 17 L7 12Z" fill="#e58a24"/>
+        </pattern>
+        <pattern id="tileC" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#0f7a78"/><circle cx="8" cy="8" r="4.5" fill="#f7f4ea"/><circle cx="8" cy="8" r="2" fill="#1f5fbf"/></pattern>
+        <symbol id="doorface" viewBox="0 0 90 445">
+          <rect width="90" height="445" fill="url(#db)"/>
+          <rect width="90" height="445" fill="url(#dsh)"/>
+          <g stroke="#0b2a5e" stroke-width=".5" opacity=".35"><path d="M22 0V445M45 0V445M68 0V445"/></g>
+          <!-- recessed wells -->
+          <g fill="#0c2f6b"><path d="M9 152 V78 Q45 24 81 78 V152Z"/><rect x="9" y="160" width="72" height="82" rx="3"/><rect x="9" y="250" width="72" height="82" rx="3"/><rect x="9" y="340" width="72" height="92" rx="3"/></g>
+          <!-- raised carved panels -->
+          <g fill="#1d55b4" filter="url(#bev)">
+            <path d="M14 148 V82 Q45 36 76 82 V148Z"/><rect x="14" y="165" width="62" height="72" rx="2"/><rect x="14" y="255" width="62" height="72" rx="2"/><rect x="14" y="345" width="62" height="82" rx="2"/>
+          </g>
+          <g fill="#2463c8" filter="url(#bev)">
+            <path d="M45 181 l14 20 -14 20 -14 -20z M45 271 l14 20 -14 20 -14 -20z M45 362 l15 24 -15 24 -15 -24z"/>
+            <path d="M26 140 V90 Q45 60 64 90 V140Z"/>
+          </g>
+          <g fill="none" stroke="#f6e3a6" stroke-width="1" opacity=".9">
+            <path d="M45 187 l10 14 -10 14 -10 -14z M45 277 l10 14 -10 14 -10 -14z M45 369 l11 17 -11 17 -11 -17z"/><circle cx="45" cy="114" r="11"/>
+          </g>
+          <!-- gold straps -->
+          <g fill="url(#strap)" filter="url(#bev)"><rect x="0" y="152" width="90" height="8"/><rect x="0" y="242" width="90" height="8"/><rect x="0" y="332" width="90" height="8"/><rect x="0" y="432" width="90" height="9"/><rect x="0" y="4" width="90" height="6"/></g>
+          <g fill="url(#stud)" filter="url(#bev)">
+            <circle cx="12" cy="156" r="3.6"/><circle cx="34" cy="156" r="3.6"/><circle cx="56" cy="156" r="3.6"/><circle cx="78" cy="156" r="3.6"/>
+            <circle cx="12" cy="246" r="3.6"/><circle cx="34" cy="246" r="3.6"/><circle cx="56" cy="246" r="3.6"/><circle cx="78" cy="246" r="3.6"/>
+            <circle cx="12" cy="336" r="3.6"/><circle cx="34" cy="336" r="3.6"/><circle cx="56" cy="336" r="3.6"/><circle cx="78" cy="336" r="3.6"/>
+            <circle cx="12" cy="436" r="3.6"/><circle cx="34" cy="436" r="3.6"/><circle cx="56" cy="436" r="3.6"/><circle cx="78" cy="436" r="3.6"/>
+            <circle cx="45" cy="114" r="5.5"/>
+          </g>
+          <g filter="url(#bev)"><path d="M70 256 q6 -8 12 0 v10 h-12z" fill="url(#gd)"/><circle cx="76" cy="262" r="5" fill="url(#stud)"/><circle cx="76" cy="279" r="10" fill="none" stroke="url(#gd)" stroke-width="3.6"/></g>
+          <rect x="84" y="0" width="6" height="445" fill="url(#seam)"/>
+          <rect width="90" height="445" fill="url(#dgloss)"/>
+        </symbol>
+        <path id="archp" d="M110 640 V330 Q110 300 128 292 Q124 262 150 256 Q152 228 180 230 Q188 210 200 200 Q212 210 220 230 Q248 228 250 256 Q276 262 272 292 Q290 300 290 330 V640 Z"/>
+      
     <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0b8"/><stop offset=".45" stop-color="#d4a640"/><stop offset="1" stop-color="#8d6a26"/></linearGradient>
     <linearGradient id="mar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8f1a30"/><stop offset="1" stop-color="#4d0a16"/></linearGradient>
     <linearGradient id="crm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffdf5"/><stop offset="1" stop-color="#f3e6c8"/></linearGradient>
     <path id="fp" d="M20 430 V150 Q20 120 40 110 Q36 80 62 72 Q66 44 96 46 Q110 22 150 10 Q190 22 204 46 Q234 44 238 72 Q264 80 260 110 Q280 120 280 150 V430 Z"/>
-    <g id="frameOrn">
-      <use href="#fp" fill="none" stroke="url(#g1)" stroke-width="6"/>
+    <g id="frameOrn" filter="url(#bev)">
+      <use href="#fp" fill="none" stroke="url(#g1)" stroke-width="7"/>
       <use href="#fp" fill="none" stroke="url(#g1)" stroke-width="1.6" transform="translate(150 226) scale(.885 .9) translate(-150 -226)"/>
       <use href="#fp" fill="none" stroke="#fff6d8" stroke-width="3" stroke-dasharray=".1 9" stroke-linecap="round" transform="translate(150 226) scale(.94 .95) translate(-150 -226)"/>
       <g fill="url(#g1)"><circle cx="150" cy="6" r="6"/><path d="M150 -14 l5 13 h-10z"/><circle cx="150" cy="-16" r="3"/><circle cx="20" cy="430" r="7"/><circle cx="280" cy="430" r="7"/></g>
@@ -429,15 +507,15 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
       <g fill="#f29a2e"><circle cx="34" cy="424" r="9"/><circle cx="50" cy="432" r="7"/><circle cx="266" cy="424" r="9"/><circle cx="250" cy="432" r="7"/></g>
       <g fill="#3f8a45"><path d="M60 434 q14 -14 26 -4 q-14 8 -26 4z M240 434 q-14 -14 -26 -4 q14 8 26 4z"/></g>
     </g>
-    <symbol id="frameDark" viewBox="0 0 300 440" overflow="visible"><use href="#fp" fill="url(#mar)"/><use href="#fp" fill="none" stroke="#0f7a78" stroke-width="14" opacity=".9"/><use href="#frameOrn"/></symbol>
-    <symbol id="frameLight" viewBox="0 0 300 440" overflow="visible"><use href="#fp" fill="url(#crm)"/><use href="#fp" fill="none" style="stroke:var(--c,#7a1426)" stroke-width="14" opacity=".85"/><use href="#frameOrn"/></symbol>
+    <symbol id="frameDark" viewBox="0 0 300 440" overflow="visible"><use href="#fp" fill="url(#mar)"/><g clip-path="url(#fpclip)"><use href="#fp" fill="url(#cardlit)"/><use href="#fp" fill="none" stroke="#1a0508" stroke-width="34" opacity=".5" filter="url(#soft)"/></g><use href="#fp" fill="none" stroke="#0f7a78" stroke-width="15" filter="url(#bevC)"/><use href="#frameOrn"/></symbol>
+    <symbol id="frameLight" viewBox="0 0 300 440" overflow="visible"><use href="#fp" fill="url(#crm)"/><g clip-path="url(#fpclip)"><use href="#fp" fill="url(#cardlit)"/><use href="#fp" fill="none" stroke="#5a3a14" stroke-width="34" opacity=".32" filter="url(#soft)"/></g><use href="#fp" fill="none" style="stroke:var(--c,#7a1426)" stroke-width="15" filter="url(#bevC)"/><use href="#frameOrn"/></symbol>
     <symbol id="feather" viewBox="0 0 60 190" overflow="visible">
       <path d="M30 190 Q26 110 30 40" fill="none" stroke="#e9dcae" stroke-width="2"/>
       <g stroke="#2f8f5a" stroke-width="1.2" fill="none" opacity=".9"><path d="M30 150 q-22 -8 -26 -30 M30 150 q22 -8 26 -30 M30 130 q-24 -10 -28 -34 M30 130 q24 -10 28 -34 M30 110 q-26 -12 -28 -40 M30 110 q26 -12 28 -40 M30 92 q-24 -14 -24 -44 M30 92 q24 -14 24 -44 M30 76 q-18 -16 -16 -44 M30 76 q18 -16 16 -44"/></g>
       <ellipse cx="30" cy="44" rx="22" ry="30" fill="#3f9a4f"/><ellipse cx="30" cy="46" rx="16" ry="23" fill="#d9b03c"/><ellipse cx="30" cy="48" rx="12" ry="17" fill="#17a3a0"/><ellipse cx="30" cy="51" rx="8" ry="11" fill="#1b3fa8"/><ellipse cx="30" cy="54" rx="4" ry="5.5" fill="#0c1748"/>
     </symbol>
-    <symbol id="ovalFrame" viewBox="0 0 200 270" overflow="visible">
-      <ellipse cx="100" cy="132" rx="74" ry="104" fill="none" stroke="url(#g1)" stroke-width="12"/>
+    <symbol id="ovalFrame" viewBox="0 0 200 270" overflow="visible"><g filter="url(#bev)">
+      <ellipse cx="100" cy="132" rx="74" ry="104" fill="none" stroke="url(#g1)" stroke-width="15"/>
       <ellipse cx="100" cy="132" rx="84" ry="114" fill="none" stroke="#7a1426" stroke-width="3"/>
       <ellipse cx="100" cy="132" rx="89" ry="119" fill="none" stroke="url(#g1)" stroke-width="2"/>
       <ellipse cx="100" cy="132" rx="66" ry="96" fill="none" stroke="#fff6d8" stroke-width="2.5" stroke-dasharray=".1 7" stroke-linecap="round"/>
@@ -445,16 +523,16 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
       <g transform="translate(100 250)"><path d="M0 4 q-6 -18 0 -30 q6 12 0 30z M-3 4 q-22 -8 -27 -25 q19 3 27 25z M3 4 q22 -8 27 -25 q-19 3 -27 25z" fill="#e8859c" stroke="#b9415f"/></g>
       <g fill="#f29a2e"><circle cx="30" cy="226" r="8"/><circle cx="170" cy="226" r="8"/><circle cx="44" cy="240" r="6"/><circle cx="156" cy="240" r="6"/></g>
       <g fill="#3f8a45"><path d="M22 214 q-12 -14 -4 -28 q10 12 4 28z M178 214 q12 -14 4 -28 q-10 12 -4 28z"/></g>
-    </symbol>
-    <symbol id="archFrame" viewBox="0 0 320 400" overflow="visible">
-      <path d="M22 388 V160 A138 138 0 0 1 298 160 V388 Z" fill="none" stroke="url(#g1)" stroke-width="10"/>
+    </g></symbol>
+    <symbol id="archFrame" viewBox="0 0 320 400" overflow="visible"><g filter="url(#bev)">
+      <path d="M22 388 V160 A138 138 0 0 1 298 160 V388 Z" fill="none" stroke="url(#g1)" stroke-width="13"/>
       <path d="M10 396 V160 A150 150 0 0 1 310 160 V396 Z" fill="none" stroke="#7a1426" stroke-width="3"/>
       <path d="M4 400 V160 A156 156 0 0 1 316 160 V400" fill="none" stroke="url(#g1)" stroke-width="2"/>
       <path d="M34 380 V160 A126 126 0 0 1 286 160 V380" fill="none" stroke="#fff6d8" stroke-width="2.5" stroke-dasharray=".1 8" stroke-linecap="round"/>
       <g fill="url(#g1)"><circle cx="160" cy="6" r="6"/><path d="M160 -14 l6 14 h-12z"/></g>
       <g fill="#f29a2e"><circle cx="20" cy="386" r="10"/><circle cx="300" cy="386" r="10"/><circle cx="40" cy="394" r="7"/><circle cx="280" cy="394" r="7"/></g>
       <g fill="#e8859c" stroke="#b9415f"><circle cx="8" cy="372" r="7"/><circle cx="312" cy="372" r="7"/></g>
-    </symbol>
+    </g></symbol>
   </defs>
 </svg>
 
@@ -470,7 +548,7 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
 
   // ---------- gate: fit the 400x800 world to the screen
   var gate=document.getElementById('gate'), world=document.getElementById('world'), baseScale=1;
-  function fit(){ baseScale=Math.max(innerWidth/400, innerHeight/800); if(innerWidth>700) baseScale=Math.max(innerHeight/800, 1); world.style.transform='scale('+baseScale+')'; }
+  function fit(){ baseScale=Math.max(innerWidth/400, innerHeight/800); if(innerWidth>700) baseScale=innerHeight/800; world.style.transform='scale('+baseScale+')'; }
   fit(); addEventListener('resize', function(){ if(gate.isConnected && !gate.classList.contains('fly')) fit(); });
 
   // ---------- pointer + gyro tilt → --tx / --ty
@@ -519,12 +597,11 @@ section{position:relative;padding-top:84px;padding-bottom:84px;text-align:center
   function esc(t){ var d=document.createElement('div'); d.textContent=t||''; return d.innerHTML; }
   var EV=INV.events.map(function(e,i){ return {n:esc(e.name),day:esc(e.day),t:esc(e.time),v:esc(e.venue),c:COLS[i%COLS.length],ic:ICS[i%ICS.length]}; });
   var festEl=document.getElementById('fest'); if(festEl) festEl.innerHTML=EV.map(function(e,i){ var left=i%2===0;
-    return '<div class="frame '+(left?'fx-left':'fx-right')+'" data-3d style="--c:'+e.c+'">'
-      +'<svg class="f" viewBox="0 0 300 440"><use href="#frameLight"/></svg>'
-      +'<svg class="feather" style="'+(left?'left:-10%':'right:-10%')+';bottom:6%;--r:'+(left?'-24deg':'24deg')+'" viewBox="0 0 60 190"><use href="#feather"/></svg>'
+    return '<div class="pcard '+(left?'fx-left':'fx-right')+'" data-3d style="--c:'+e.c+'">'
+      +'<img src="/designs/royal/peacock.webp" alt="" loading="lazy">'
       +'<div class="in ev"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+e.ic+'</svg>'
       +'<h3>'+e.n+'</h3><div class="day">'+e.day+'</div><div class="t">'+e.t+'</div><p>'+e.v+'</p></div>'
-      +'<div class="glare" style="border-radius:40% 40% 4% 4%/26% 26% 2% 2%"></div></div>'; }).join('');
+      +'<div class="glare"></div></div>'; }).join('');
 
   // ---------- scroll-driven 3D
   var els=[].slice.call(document.querySelectorAll('[data-3d]')), pars=[].slice.call(document.querySelectorAll('[data-par]')), night=document.getElementById('night');
